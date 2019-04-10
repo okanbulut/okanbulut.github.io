@@ -1,1 +1,26 @@
 theme: jekyll-theme-leap-day
+baseurl: "" # The subpath of your site. Use "" if you're hosting a blog at the root level.
+url: "http://okanbulut.github.io" # the base hostname & protocol for your site
+title: "Okan Bulut"
+gems:
+  - jemoji
+exclude:
+  - "README.md"
+  - "CHANGELOG.md"
+  - "CNAME"
+  - "Gemfile"
+  - "Gemfile.lock"
+permalink: :title
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
