@@ -1,2 +1,3 @@
 name: Okan Bulut
 theme: jekyll-theme-leap-day
+permalink: /blog/:year/:month/:day/:title
