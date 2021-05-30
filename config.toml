@@ -30,7 +30,7 @@ enableEmoji = true
     
 [params]
   orgName = "University of Alberta"
-  orgLocal = "Anywhere"
+  orgLocal = "Edmonton, AB T6G 2G5 Canada"
   description = "A modern, beautiful, and easily configurable blog theme for Hugo."
   favicon = "/img/favicon.ico"
   logo = "/img/blogophonic-mark-dark.png"
@@ -86,26 +86,26 @@ enableEmoji = true
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://github.com/okanbulut"
-  [[params.social]]
-      icon      = "facebook-square" # icon name without the 'fa-'
-      icon_pack = "fab"
-      url       = "https://www.facebook.com/hashtag/ap%C3%A9ro"
-  [[params.social]]
-      icon      = "instagram" # icon name without the 'fa-'
-      icon_pack = "fab"
-      url       = "https://www.instagram.com/explore/tags/apero/"
+  #[[params.social]]
+  #    icon      = "facebook-square" # icon name without the 'fa-'
+  #    icon_pack = "fab"
+  #    url       = "https://www.facebook.com/hashtag/ap%C3%A9ro"
+  #[[params.social]]
+  #    icon      = "instagram" # icon name without the 'fa-'
+  #    icon_pack = "fab"
+  #   url       = "https://www.instagram.com/explore/tags/apero/"
   [[params.social]]
       icon      = "twitter" # icon name without the 'fa-'
       icon_pack = "fab"
-      url       = "https://twitter.com/hashtag/apéro"
+      url       = "https://twitter.com/drokanbulut"
   [[params.social]]
       icon      = "impactstory" # icon name without the 'fa-'
       icon_pack = "ai"
-      url       = "https://impactstory.org/u/0000-0002-8082-1890"
+      url       = "https://impactstory.org/u/0000-0001-5853-1267"
   [[params.social]]
       icon      = "orcid" # icon name without the 'fa-'
       icon_pack = "ai"
-      url       = "http://orcid.org/0000-0002-8082-1890"
+      url       = "http://orcid.org/0000-0001-5853-1267"
   [[params.social]]
       icon      = "rss" # icon name without the 'fa-'
       icon_pack = "fas"
