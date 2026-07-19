@@ -651,6 +651,60 @@ ol.cite-list, ul.cite-list { list-style: none; }
   .side-nav a { border: 1px solid var(--border); }
 }
 
+/* citation metrics (publications page hero) */
+
+.metrics-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+
+.metric {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.metric .num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.metric .lbl { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+
+.metrics-note { margin-top: 10px; font-size: 0.8rem; color: var(--muted); }
+
+/* video embeds (Talks & Media) */
+
+.video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+@media (max-width: 800px) { .video-grid { grid-template-columns: 1fr; } }
+
+.video-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.video-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+.video-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: block;
+  background: #000;
+}
+
+.video-card .video-caption { padding: 14px 18px 16px; }
+.video-card .video-caption h3 { font-size: 0.98rem; line-height: 1.35; margin-bottom: 4px; }
+.video-card .video-caption p { font-size: 0.85rem; color: var(--muted); }
+
 /* search input */
 
 .search-wrap { position: relative; max-width: 520px; margin-top: 22px; }
@@ -703,18 +757,33 @@ ol.cite-list, ul.cite-list { list-style: none; }
 .person:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 
 .person .avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: #fff;
   background: var(--gradient);
   margin-bottom: 14px;
+}
+
+.person .avatar-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 2px solid var(--accent-soft);
+  margin-bottom: 14px;
+}
+
+.person .statement {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: var(--text-soft);
 }
 
 .person h3 { font-size: 1.02rem; }
