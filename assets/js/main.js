@@ -186,7 +186,7 @@
     var input = document.getElementById("cite-search");
     var meta = document.getElementById("search-meta");
     if (!input) return;
-    input.addEventListener("input", function () {
+    var runFilter = function () {
       var q = input.value.trim().toLowerCase();
       var shown = 0, total = 0;
       root.querySelectorAll(".cite-list li").forEach(function (li) {
@@ -205,7 +205,16 @@
         s.style.display = any ? "" : "none";
       });
       if (meta) meta.textContent = q ? "Showing " + shown + " of " + total + " entries" : "";
-    });
+    };
+    input.addEventListener("input", runFilter);
+
+    // Deep link support: /publications/?q=term pre-fills and runs the filter.
+    var params = new URLSearchParams(window.location.search);
+    var preset = params.get("q") || params.get("search");
+    if (preset) {
+      input.value = preset;
+      runFilter();
+    }
   }
 
   /* ---------- news (home) ---------- */
