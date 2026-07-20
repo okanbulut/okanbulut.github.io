@@ -60,48 +60,67 @@
     </div>
   </section>
 
-  <!-- ============ RESEARCH AREAS ============ -->
-  <section class="section" id="areas">
+  <!-- ============ PROGRAM DIAGRAM ============ -->
+  <section class="section" id="overview">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">Research Areas</div>
-        <h2>What drives my work</h2>
+        <div class="eyebrow">Overview</div>
+        <h2>My research program at a glance</h2>
+        <p class="sub">From foundational disciplines to real-world impact. Click a foundation to read more, or an application to see the publications behind it.</p>
       </div>
-      <div class="card-grid">
-        <div class="card reveal">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/><circle cx="12" cy="12" r="9"/></svg>
-          </div>
-          <h3>Educational Data Mining</h3>
-          <p>
-            Using state-of-the-art methods in data mining, machine learning, and natural
-            language processing to analyze large-scale educational data from digital
-            assessments — turning complex information into practical insights for educators
-            and institutions.
-          </p>
+      <div class="rprogram reveal">
+
+        <p class="tier-label">Three foundations</p>
+        <div class="rp-row rp-3">
+          <button class="rp-tile rp-expand" type="button" aria-expanded="false">
+            <span class="dot dot-g"></span><h3>Educational data mining</h3><p>patterns in learning data</p>
+            <span class="rp-go rp-toggle">Details <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <p class="rp-detail" hidden>Using state-of-the-art methods in data mining, machine learning, and natural language processing to analyze large-scale educational data from digital assessments — turning complex information into practical insights for educators and institutions.</p>
+          </button>
+          <button class="rp-tile rp-expand" type="button" aria-expanded="false">
+            <span class="dot dot-g"></span><h3>Learning analytics</h3><p>insight from digital traces</p>
+            <span class="rp-go rp-toggle">Details <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <p class="rp-detail" hidden>Harnessing student data from learning management systems and other digital sources to identify the factors associated with learning, and designing systems that support personalized education at every stage.</p>
+          </button>
+          <button class="rp-tile rp-expand" type="button" aria-expanded="false">
+            <span class="dot dot-g"></span><h3>Psychometrics</h3><p>measurement quality and validity</p>
+            <span class="rp-go rp-toggle">Details <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            <p class="rp-detail" hidden>Analyzing assessment data and investigating measurement quality — addressing psychometric issues such as bias, careless responding, and wording effects that threaten the validity and reliability of assessments.</p>
+          </button>
         </div>
-        <div class="card reveal">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
-          </div>
-          <h3>Learning Analytics</h3>
-          <p>
-            Harnessing student data from learning management systems and other digital
-            sources to identify the factors associated with learning, and designing systems
-            that support personalized education at every stage.
-          </p>
+
+        <div class="rp-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
         </div>
-        <div class="card reveal">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v4l4 11a2 2 0 0 1-2 3H7a2 2 0 0 1-2-3L9 7V3z"/><path d="M8 3h8"/><path d="M7.5 13h9"/></svg>
-          </div>
-          <h3>Psychometrics</h3>
-          <p>
-            Analyzing assessment data and investigating measurement quality — addressing
-            psychometric issues such as bias, careless responding, and wording effects that
-            threaten the validity and reliability of assessments.
-          </p>
+
+        <div class="rp-engine">
+          <h3>AI · machine learning · NLP</h3>
+          <p>the methods that connect them</p>
         </div>
+
+        <div class="rp-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </div>
+
+        <p class="tier-label">Applied to assessment</p>
+        <div class="rp-row rp-4">
+          <a class="rp-tile" href="../publications/?q=generation"><span class="dot dot-a"></span><h3>Item &amp; feedback generation</h3><p>with large language models</p><span class="rp-go">View papers →</span></a>
+          <a class="rp-tile" href="../publications/?q=conversation"><span class="dot dot-a"></span><h3>Conversation-based assessment</h3><p>assessment as dialogue</p><span class="rp-go">View papers →</span></a>
+          <a class="rp-tile" href="../publications/?q=adaptive"><span class="dot dot-a"></span><h3>Adaptive testing</h3><p>tailored to each learner</p><span class="rp-go">View papers →</span></a>
+          <a class="rp-tile" href="../publications/?q=response time"><span class="dot dot-a"></span><h3>Process-data analysis</h3><p>how learners solve problems</p><span class="rp-go">View papers →</span></a>
+        </div>
+
+        <div class="rp-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </div>
+
+        <div class="rp-impact">
+          <span class="lead">Actionable insight for</span>
+          <span class="rp-chip-aud">Learners</span>
+          <span class="rp-chip-aud">Educators</span>
+          <span class="rp-chip-aud">Partners</span>
+        </div>
+
       </div>
     </div>
   </section>

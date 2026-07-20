@@ -33,6 +33,17 @@
     });
   }
 
+  /* ---------- expandable diagram tiles (research page) ---------- */
+
+  document.querySelectorAll(".rp-expand").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", open ? "false" : "true");
+      var detail = btn.querySelector(".rp-detail");
+      if (detail) detail.hidden = open;
+    });
+  });
+
   /* ---------- reveal on scroll ---------- */
 
   var revealEls = document.querySelectorAll(".reveal");
