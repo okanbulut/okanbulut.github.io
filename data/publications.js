@@ -14,6 +14,17 @@
    4. To show an indented note below an entry (e.g., a book review),
       use an object instead of a string:
         { html: "The citation...", note: "The note text..." },
+   5. BOOK COVERS (Books & Book Chapters only): add a "cover" (and
+      optionally "url") field to show the cover in the gallery at the top
+      of the section. Use the object form:
+        { html: "The citation...", cover: "/assets/img/covers/my-book.jpg",
+          url: "https://publisher.example/book" },
+      - "cover" is the image path from the site root (leading "/"). Drop the file
+        into assets/img/covers/ (kebab-case name). If the file is missing,
+        the cover is simply skipped — no broken image.
+      - "url" is where the cover links. If omitted, the first link inside
+        "html" is used. Book chapters share the cover of the book they are
+        in: give several chapters the SAME cover path and it appears once.
    DOIs (doi:10.xxxx/...) and URLs are turned into links automatically.
    "Bulut, O." is bolded automatically on the page.
    ============================================================ */
@@ -22,30 +33,100 @@ const PUBLICATIONS = {
 
   books: [
     "Bulut, O., Shin, J., &amp; Yildirim-Erbasli, S. (In preparation). <em>Educational data mining: Applications in digital assessments</em>. Boca Raton, FL: CRC Press.",
-    "Bulut, O. (2024). <em>Psycho-educational assessments: Theory and practice</em>. MDPI. https://doi.org/10.3390/books978-3-7258-0551-8",
+    {
+      html: "Bulut, O. (2024). <em>Psycho-educational assessments: Theory and practice</em>. MDPI. https://doi.org/10.3390/books978-3-7258-0551-8",
+      cover: "/assets/img/covers/psycho-educational-assessments.jpg",
+      url: "https://doi.org/10.3390/books978-3-7258-0551-8",
+    },
     {
       html: "Desjardins, C. D., &amp; Bulut, O. (2018). <a href=\"https://www.crcpress.com/Handbook-of-Educational-Measurement-and-Psychometrics-Using-R/Desjardins-Bulut/p/book/9781498770132\" target=\"_blank\" rel=\"noopener\"><em>Handbook of educational measurement and psychometrics using R</em></a>. Boca Raton, FL: CRC Press.",
       note: "A review of our book in <em>The American Statistician</em>: <a href=\"https://www.tandfonline.com/doi/full/10.1080/00031305.2019.1676110\" target=\"_blank\" rel=\"noopener\">https://www.tandfonline.com/doi/full/10.1080/00031305.2019.1676110</a>",
+      cover: "/assets/img/covers/handbook-emp-r.jpg",
+      url: "https://www.crcpress.com/Handbook-of-Educational-Measurement-and-Psychometrics-Using-R/Desjardins-Bulut/p/book/9781498770132",
     },
   ],
 
   chapters: [
-    "Jerez, D., &amp; Bulut, O. (2026). Tracing the paths of slow responders in complex problem-solving: A transition network analysis approach. In M. Saqr, K. Misiejuk, & S. López-Pernas (Eds.), <em>Innovations in analytics of learning dynamics</em> (pp. 114–124). Springer Nature Switzerland. doi:10.1007/978-3-032-34157-0_9",
-    "Bulut, O., &amp; Walsh, C. (2026). Closing the feedback loop: Automated quality assurance for LLM-generated feedback. In E. G. Blanchard, G. Chen, M. Chi, &amp; S. Isotani (Eds.), <em>Artificial Intelligence in Education. Late Breaking Results, WideAIED, Practitioners, Industry and Policies, Blue Sky, Doctoral Consortium, FoL Workshops and Tutorials, FoL Invited Papers</em> (Communications in Computer and Information Science, Vol. 3031, pp. 130–136). Springer. doi:10.1007/978-3-032-29788-4_19",
-    "Bulut, O., Tan, B., &amp; Yildirim-Erbasli, S. N. (2026). Does conversation-based assessment elicit higher-level thinking? Evidence from expert and LLM ratings. In E. G. Blanchard, G. Chen, M. Chi, &amp; S. Isotani (Eds.), <em>Artificial Intelligence in Education. Late Breaking Results, WideAIED, Practitioners, Industry and Policies, Blue Sky, Doctoral Consortium, FoL Workshops and Tutorials, FoL Invited Papers</em> (Communications in Computer and Information Science, Vol. 3031, pp. 222–229). Springer. doi:10.1007/978-3-032-29788-4_32",
-    "Yuan, Z., Bulut, O., Geoffre, T., &amp; Wang, Q. (2026). From assessment to human–AI co-creation in language learning: Adaptive, inclusive, and game-based design in the generative AI era. In E. G. Blanchard, G. Chen, M. Chi, &amp; S. Isotani (Eds.), <em>Artificial Intelligence in Education. Late Breaking Results, WideAIED, Practitioners, Industry and Policies, Blue Sky, Doctoral Consortium, FoL Workshops and Tutorials, FoL Invited Papers</em> (Communications in Computer and Information Science, Vol. 3033, pp. 39–43). Springer. doi:10.1007/978-3-032-29794-5_7",
-    "Bulut, O., Liu, J. X., &amp; Liu, X. (2026). Leveraging AI-powered tools for personalized learning pathways. In S. Papadakis (Ed.), <em>Virtual tutors and AI-powered instructional tools in K-12 settings </em>(pp. 173-220). IGI Global Scientific Publishing. doi:10.4018/979-8-3373-2637-5.ch006",
-    "Bulut, O., Tan, B., &amp; Mazzullo, E. (2026). Applications of large language models in automatic item and feedback generation for early elementary education. In S. Papadakis (Ed.), <a href=\"https://link.springer.com/book/9783032171894\" target=\"_blank\" rel=\"noopener\"><em>AI applications in preschool and primary education – Teaching with artificial intelligence</em></a> (pp. 209–225). Springer. doi:10.1007/978-3-032-17190-0_12",
-    "Gorgun, G., Bulut, O., &amp; Tan, B. (2025). Designing classroom assessments with generative AI: A teacher-in-the-loop framework. In S. Papadakis (Ed.), <a href=\"https://www.routledge.com/Teaching-with-Artificial-Intelligence-A-Guide-for-Primary-and-Elementary-Educators/Papadakis/p/book/9781041159919?gad_source=1&gad_campaignid=23345041667&gbraid=0AAAAACWuhHVAu0IQDpedt8TCD6afQiO9f&gclid=Cj0KCQiAnJHMBhDAARIsABr7b85J6Ak-5ZpSTSMh8aVilaZeOj5MCXl-BAJu_t3djhLKQbGKqiZbvd8aAm_5EALw_wcB\" target=\"_blank\" rel=\"noopener\"><em>Teaching with artificial intelligence: A guide for primary and elementary educators</em></a>(pp. 162-180). Routledge. doi:10.4324/9781003685241-14",
-    "Bulut, O., Liu, J. X., &amp; Demir, H. (2025). Deep reinforcement learning for engagement-aware question selection in adaptive assessment systems. In A. I. Cristea, E. Walker, Y. Lu, O. C. Santos, &amp; S. Isotani (Eds.), <em>Artificial intelligence in education. Posters and late breaking results, workshops and tutorials, industry and innovation tracks, practitioners, doctoral consortium, blue sky, and wideAIED</em> (pp. 27-34). AIED 2025. Communications in Computer and Information Science, vol 2592. Springer, Cham. doi:10.1007/978-3-031-99267-4_4",
-    "Wongvorachan, T., &amp; Bulut, O. (2025). The use of natural language processing in learning analytics. In M. Saqr &amp; S. López-Pernas (Eds.), <em>Advanced learning analytics methods. AI, Precision and Complexity </em>(In press). Springer. <a href=\"https://lamethods.org/book2/chapters/ch09-nlp/ch09-nlp.html\" target=\"_blank\" rel=\"noopener\">https://lamethods.org/book2/chapters/ch09-nlp/ch09-nlp.html</a>",
-    "Wongvorachan, T., &amp; Bulut, O. (2025). The advanced applications of psychological networks with exploratory graph analysis. In M. Saqr &amp; S. López-Pernas (Eds.), <em>Advanced learning analytics methods. AI, Precision and Complexity </em>(In press). Springer. <a href=\"https://lamethods.org/book2/chapters/ch13-ega/ch13-ega.html\" target=\"_blank\" rel=\"noopener\">https://lamethods.org/book2/chapters/ch13-ega/ch13-ega.html</a>",
-    "Bulut, O. (2025). Creating value from process data: Implications for multistage testing. In D. Yan, A. von Davier, &amp; D. Weiss (Eds.), <em>Research for practical issues and solutions in computerized multistage testing </em>(pp. 242-261). Routledge. doi:10.4324/9780429263491-16",
-    "Bulut, O., Yildirim-Erbasli, S. N., &amp; Gorgun, G. (2024). Assessment analytics for digital assessments: Identifying, modeling, and interpreting behavioral engagement. In M. Sahin &amp; D. Ifenthaler (Eds.), <a href=\"https://link.springer.com/book/9783031563645\" target=\"_blank\" rel=\"noopener\"><em>Assessment analytics in education – Designs, methods and solutions</em></a>(pp. 35-60). Springer, Cham. <a href=\"https://doi.org/10.1007/978-3-031-56365-2_3\" target=\"_blank\" rel=\"noopener\">https://doi.org/10.1007/978-3-031-56365-2_3</a>",
-    "Bulut, O. (2024). From adaptive testing to personalized adaptive testing: Applications of recommender systems. In H. Jiao &amp; R. W. Lissitz (Eds.), <a href=\"https://www.infoagepub.com/products/Machine-Learning-Natural-Language-Processing-and-Psychometrics\" target=\"_blank\" rel=\"noopener\"><em>Machine learning, natural language processing, and psychometrics</em></a> (pp. 177-199). Information Age Publishing.",
-    "Yildirim-Erbasli, S. N., Gorgun, G., &amp; Bulut, O. (2024). <a href=\"https://www.igi-global.com/gateway/chapter/336012\" target=\"_blank\" rel=\"noopener\">Enhancing self-regulated learning with artificial intelligence-powered learning analytics</a>. In N. K. Ulutaş &amp; D. Höl (Eds.), <em>Emergent practices of learning analytics in K-12 classrooms </em>(pp. 57-83).IGI Global. doi:10.4018/979-8-3693-0066-4.ch004.",
-    "Bulut, O., &amp; Cui, Y. (2021). Validating the findings of a survey research study. In U. Luhanga &amp; A. G. Harbaugh (Eds.), <a href=\"https://www.infoagepub.com/products/Basic-Elements-of-Survey-Research-in-Education\" target=\"_blank\" rel=\"noopener\"><em>Basic elements of survey research in education: Addressing the problems your advisor never told you about</em></a>(pp. 719-746).Charlotte, NC: Information Age Publishing.",
-    "Gierl, M. J., Bulut, O., &amp; Zhang, X. (2018). <a href=\"https://www.igi-global.com/chapter/using-computerized-formative-testing-to-support-personalized-learning-in-higher-education/199535\" target=\"_blank\" rel=\"noopener\">Using computerized formative testing to support personalized learning in higher education: An application of two assessment technologies</a>. In R. Zheng (Ed.), <a href=\"https://www.igi-global.com/book/digital-technologies-instructional-design-personalized/181915\" target=\"_blank\" rel=\"noopener\"><em>Digital technologies and instructional design for personalized learning</em></a>(pp. 99-119). Hershey, PA: IGI Global. doi:10.4018/978-1-5225-3940-7.ch005",
+    {
+      html: "Jerez, D., &amp; Bulut, O. (2026). Tracing the paths of slow responders in complex problem-solving: A transition network analysis approach. In M. Saqr, K. Misiejuk, & S. López-Pernas (Eds.), <em>Innovations in analytics of learning dynamics</em> (pp. 114–124). Springer Nature Switzerland. doi:10.1007/978-3-032-34157-0_9",
+      cover: "/assets/img/covers/innovations-in-analytics-of-learning-dynamics.jpg",
+      url: "https://doi.org/10.1007/978-3-032-34157-0_9",
+    },
+    {
+      html: "Bulut, O., &amp; Walsh, C. (2026). Closing the feedback loop: Automated quality assurance for LLM-generated feedback. In E. G. Blanchard, G. Chen, M. Chi, &amp; S. Isotani (Eds.), <em>Artificial Intelligence in Education. Late Breaking Results, WideAIED, Practitioners, Industry and Policies, Blue Sky, Doctoral Consortium, FoL Workshops and Tutorials, FoL Invited Papers</em> (Communications in Computer and Information Science, Vol. 3031, pp. 130–136). Springer. doi:10.1007/978-3-032-29788-4_19",
+      cover: "/assets/img/covers/aied-2025-ccis-3031.jpg",
+      url: "https://doi.org/10.1007/978-3-032-29788-4_19",
+    },
+    {
+      html: "Bulut, O., Tan, B., &amp; Yildirim-Erbasli, S. N. (2026). Does conversation-based assessment elicit higher-level thinking? Evidence from expert and LLM ratings. In E. G. Blanchard, G. Chen, M. Chi, &amp; S. Isotani (Eds.), <em>Artificial Intelligence in Education. Late Breaking Results, WideAIED, Practitioners, Industry and Policies, Blue Sky, Doctoral Consortium, FoL Workshops and Tutorials, FoL Invited Papers</em> (Communications in Computer and Information Science, Vol. 3031, pp. 222–229). Springer. doi:10.1007/978-3-032-29788-4_32",
+      cover: "/assets/img/covers/aied-2025-ccis-3031.jpg",
+      url: "https://doi.org/10.1007/978-3-032-29788-4_32",
+    },
+    {
+      html: "Yuan, Z., Bulut, O., Geoffre, T., &amp; Wang, Q. (2026). From assessment to human–AI co-creation in language learning: Adaptive, inclusive, and game-based design in the generative AI era. In E. G. Blanchard, G. Chen, M. Chi, &amp; S. Isotani (Eds.), <em>Artificial Intelligence in Education. Late Breaking Results, WideAIED, Practitioners, Industry and Policies, Blue Sky, Doctoral Consortium, FoL Workshops and Tutorials, FoL Invited Papers</em> (Communications in Computer and Information Science, Vol. 3033, pp. 39–43). Springer. doi:10.1007/978-3-032-29794-5_7",
+      cover: "/assets/img/covers/aied-2025-ccis-3033.jpg",
+      url: "https://doi.org/10.1007/978-3-032-29794-5_7",
+    },
+    {
+      html: "Bulut, O., Liu, J. X., &amp; Liu, X. (2026). Leveraging AI-powered tools for personalized learning pathways. In S. Papadakis (Ed.), <em>Virtual tutors and AI-powered instructional tools in K-12 settings </em>(pp. 173-220). IGI Global Scientific Publishing. doi:10.4018/979-8-3373-2637-5.ch006",
+      cover: "/assets/img/covers/virtual-tutors-ai-powered-instructional-tools.jpg",
+      url: "https://doi.org/10.4018/979-8-3373-2637-5.ch006",
+    },
+    {
+      html: "Bulut, O., Tan, B., &amp; Mazzullo, E. (2026). Applications of large language models in automatic item and feedback generation for early elementary education. In S. Papadakis (Ed.), <a href=\"https://link.springer.com/book/9783032171894\" target=\"_blank\" rel=\"noopener\"><em>AI applications in preschool and primary education – Teaching with artificial intelligence</em></a> (pp. 209–225). Springer. doi:10.1007/978-3-032-17190-0_12",
+      cover: "/assets/img/covers/ai-applications-preschool-primary-education.jpg",
+      url: "https://link.springer.com/book/9783032171894",
+    },
+    {
+      html: "Gorgun, G., Bulut, O., &amp; Tan, B. (2025). Designing classroom assessments with generative AI: A teacher-in-the-loop framework. In S. Papadakis (Ed.), <a href=\"https://www.routledge.com/Teaching-with-Artificial-Intelligence-A-Guide-for-Primary-and-Elementary-Educators/Papadakis/p/book/9781041159919?gad_source=1&gad_campaignid=23345041667&gbraid=0AAAAACWuhHVAu0IQDpedt8TCD6afQiO9f&gclid=Cj0KCQiAnJHMBhDAARIsABr7b85J6Ak-5ZpSTSMh8aVilaZeOj5MCXl-BAJu_t3djhLKQbGKqiZbvd8aAm_5EALw_wcB\" target=\"_blank\" rel=\"noopener\"><em>Teaching with artificial intelligence: A guide for primary and elementary educators</em></a>(pp. 162-180). Routledge. doi:10.4324/9781003685241-14",
+      cover: "/assets/img/covers/teaching-with-artificial-intelligence.jpg",
+      url: "https://www.routledge.com/Teaching-with-Artificial-Intelligence-A-Guide-for-Primary-and-Elementary-Educators/Papadakis/p/book/9781041159919",
+    },
+    {
+      html: "Bulut, O., Liu, J. X., &amp; Demir, H. (2025). Deep reinforcement learning for engagement-aware question selection in adaptive assessment systems. In A. I. Cristea, E. Walker, Y. Lu, O. C. Santos, &amp; S. Isotani (Eds.), <em>Artificial intelligence in education. Posters and late breaking results, workshops and tutorials, industry and innovation tracks, practitioners, doctoral consortium, blue sky, and wideAIED</em> (pp. 27-34). AIED 2025. Communications in Computer and Information Science, vol 2592. Springer, Cham. doi:10.1007/978-3-031-99267-4_4",
+      cover: "/assets/img/covers/aied-2025-ccis-2592.jpg",
+      url: "https://doi.org/10.1007/978-3-031-99267-4_4",
+    },
+    {
+      html: "Wongvorachan, T., &amp; Bulut, O. (2025). The use of natural language processing in learning analytics. In M. Saqr &amp; S. López-Pernas (Eds.), <em>Advanced learning analytics methods. AI, Precision and Complexity </em>(In press). Springer. <a href=\"https://lamethods.org/book2/chapters/ch09-nlp/ch09-nlp.html\" target=\"_blank\" rel=\"noopener\">https://lamethods.org/book2/chapters/ch09-nlp/ch09-nlp.html</a>",
+      cover: "/assets/img/covers/advanced-learning-analytics-methods.jpg",
+      url: "https://lamethods.org/book2/chapters/ch09-nlp/ch09-nlp.html",
+    },
+    {
+      html: "Wongvorachan, T., &amp; Bulut, O. (2025). The advanced applications of psychological networks with exploratory graph analysis. In M. Saqr &amp; S. López-Pernas (Eds.), <em>Advanced learning analytics methods. AI, Precision and Complexity </em>(In press). Springer. <a href=\"https://lamethods.org/book2/chapters/ch13-ega/ch13-ega.html\" target=\"_blank\" rel=\"noopener\">https://lamethods.org/book2/chapters/ch13-ega/ch13-ega.html</a>",
+      cover: "/assets/img/covers/advanced-learning-analytics-methods.jpg",
+      url: "https://lamethods.org/book2/chapters/ch13-ega/ch13-ega.html",
+    },
+    {
+      html: "Bulut, O. (2025). Creating value from process data: Implications for multistage testing. In D. Yan, A. von Davier, &amp; D. Weiss (Eds.), <em>Research for practical issues and solutions in computerized multistage testing </em>(pp. 242-261). Routledge. doi:10.4324/9780429263491-16",
+      cover: "/assets/img/covers/computerized-multistage-testing.jpg",
+      url: "https://doi.org/10.4324/9780429263491-16",
+    },
+    {
+      html: "Bulut, O., Yildirim-Erbasli, S. N., &amp; Gorgun, G. (2024). Assessment analytics for digital assessments: Identifying, modeling, and interpreting behavioral engagement. In M. Sahin &amp; D. Ifenthaler (Eds.), <a href=\"https://link.springer.com/book/9783031563645\" target=\"_blank\" rel=\"noopener\"><em>Assessment analytics in education – Designs, methods and solutions</em></a>(pp. 35-60). Springer, Cham. <a href=\"https://doi.org/10.1007/978-3-031-56365-2_3\" target=\"_blank\" rel=\"noopener\">https://doi.org/10.1007/978-3-031-56365-2_3</a>",
+      cover: "/assets/img/covers/assessment-analytics-in-education.jpg",
+      url: "https://link.springer.com/book/9783031563645",
+    },
+    {
+      html: "Bulut, O. (2024). From adaptive testing to personalized adaptive testing: Applications of recommender systems. In H. Jiao &amp; R. W. Lissitz (Eds.), <a href=\"https://www.infoagepub.com/products/Machine-Learning-Natural-Language-Processing-and-Psychometrics\" target=\"_blank\" rel=\"noopener\"><em>Machine learning, natural language processing, and psychometrics</em></a> (pp. 177-199). Information Age Publishing.",
+      cover: "/assets/img/covers/machine-learning-nlp-psychometrics.jpg",
+      url: "https://www.infoagepub.com/products/Machine-Learning-Natural-Language-Processing-and-Psychometrics",
+    },
+    {
+      html: "Yildirim-Erbasli, S. N., Gorgun, G., &amp; Bulut, O. (2024). <a href=\"https://www.igi-global.com/gateway/chapter/336012\" target=\"_blank\" rel=\"noopener\">Enhancing self-regulated learning with artificial intelligence-powered learning analytics</a>. In N. K. Ulutaş &amp; D. Höl (Eds.), <em>Emergent practices of learning analytics in K-12 classrooms </em>(pp. 57-83).IGI Global. doi:10.4018/979-8-3693-0066-4.ch004.",
+      cover: "/assets/img/covers/emergent-practices-learning-analytics-k12.jpg",
+      url: "https://doi.org/10.4018/979-8-3693-0066-4.ch004",
+    },
+    {
+      html: "Bulut, O., &amp; Cui, Y. (2021). Validating the findings of a survey research study. In U. Luhanga &amp; A. G. Harbaugh (Eds.), <a href=\"https://www.infoagepub.com/products/Basic-Elements-of-Survey-Research-in-Education\" target=\"_blank\" rel=\"noopener\"><em>Basic elements of survey research in education: Addressing the problems your advisor never told you about</em></a>(pp. 719-746).Charlotte, NC: Information Age Publishing.",
+      cover: "/assets/img/covers/basic-elements-of-survey-research.jpg",
+      url: "https://www.infoagepub.com/products/Basic-Elements-of-Survey-Research-in-Education",
+    },
+    {
+      html: "Gierl, M. J., Bulut, O., &amp; Zhang, X. (2018). <a href=\"https://www.igi-global.com/chapter/using-computerized-formative-testing-to-support-personalized-learning-in-higher-education/199535\" target=\"_blank\" rel=\"noopener\">Using computerized formative testing to support personalized learning in higher education: An application of two assessment technologies</a>. In R. Zheng (Ed.), <a href=\"https://www.igi-global.com/book/digital-technologies-instructional-design-personalized/181915\" target=\"_blank\" rel=\"noopener\"><em>Digital technologies and instructional design for personalized learning</em></a>(pp. 99-119). Hershey, PA: IGI Global. doi:10.4018/978-1-5225-3940-7.ch005",
+      cover: "/assets/img/covers/digital-technologies-instructional-design.jpg",
+      url: "https://www.igi-global.com/book/digital-technologies-instructional-design-personalized/181915",
+    },
   ],
 
   articles: [

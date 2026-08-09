@@ -104,6 +104,72 @@
     return list;
   }
 
+  // Build a gallery of clickable book covers from entries that carry a
+  // `cover` field. Duplicate covers (e.g. several chapters in the same book)
+  // are shown once. Covers whose image file is missing remove themselves via
+  // onerror, so covers can be added incrementally. Returns null if none.
+  function coverGallery(items) {
+    var seen = {};
+    var cards = [];
+    items.forEach(function (it) {
+      if (typeof it !== "object" || !it.cover) return;
+      if (seen[it.cover]) return;
+      seen[it.cover] = true;
+
+      // Derive alt text from the italic title in the citation, tags stripped.
+      var title = "";
+      var m = /<em>([\s\S]*?)<\/em>/.exec(it.html || "");
+      if (m) title = m[1].replace(/<[^>]*>/g, "").trim();
+
+      // Link target: explicit url, else the first link inside the citation.
+      var href = it.url;
+      if (!href) {
+        var a = /<a\b[^>]*href="([^"]+)"/.exec(it.html || "");
+        if (a) href = a[1];
+      }
+
+      var img = document.createElement("img");
+      // Attach the error handler before setting src so a missing cover file
+      // (404) always removes its card — the gallery only shows covers that
+      // actually exist. Loaded eagerly (few covers) so this fires reliably.
+      img.alt = title;
+      img.onerror = function () {
+        var card = img.parentNode;
+        var gal = card && card.parentNode;
+        if (gal) {
+          gal.removeChild(card);
+          // Drop the whole gallery once its last cover is gone, so no empty
+          // margin-gap remains above the citation list.
+          if (!gal.querySelector(".cover-card") && gal.parentNode) {
+            gal.parentNode.removeChild(gal);
+          }
+        }
+      };
+      img.src = it.cover;
+
+      var card;
+      if (href) {
+        card = document.createElement("a");
+        card.className = "cover-card";
+        card.href = href;
+        card.target = "_blank";
+        card.rel = "noopener";
+        if (title) card.title = title;
+      } else {
+        card = document.createElement("div");
+        card.className = "cover-card";
+      }
+      card.appendChild(img);
+      cards.push(card);
+    });
+
+    if (!cards.length) return null;
+    var gallery = document.createElement("div");
+    gallery.className = "cover-gallery";
+    cards.forEach(function (c) { gallery.appendChild(c); });
+    return gallery;
+  }
+
   function sectionEl(id, title, note, count) {
     var sec = document.createElement("section");
     sec.className = "cite-section";
@@ -141,10 +207,14 @@
     var nArticles = P.articles.reduce(function (n, g) { return n + g.items.length; }, 0);
 
     var secBooks = sectionEl("books", "Books", "", P.books.length);
+    var booksGallery = coverGallery(P.books);
+    if (booksGallery) secBooks.appendChild(booksGallery);
     secBooks.appendChild(citeList(P.books));
     pubsRoot.appendChild(secBooks);
 
     var secCh = sectionEl("chapters", "Book Chapters", "", P.chapters.length);
+    var chGallery = coverGallery(P.chapters);
+    if (chGallery) secCh.appendChild(chGallery);
     secCh.appendChild(citeList(P.chapters));
     pubsRoot.appendChild(secCh);
 
