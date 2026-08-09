@@ -90,12 +90,12 @@ const PUBLICATIONS = {
     {
       html: "Wongvorachan, T., &amp; Bulut, O. (2025). The use of natural language processing in learning analytics. In M. Saqr &amp; S. López-Pernas (Eds.), <em>Advanced learning analytics methods. AI, Precision and Complexity </em>(In press). Springer. <a href=\"https://lamethods.org/book2/chapters/ch09-nlp/ch09-nlp.html\" target=\"_blank\" rel=\"noopener\">https://lamethods.org/book2/chapters/ch09-nlp/ch09-nlp.html</a>",
       cover: "/assets/img/covers/advanced-learning-analytics-methods.jpg",
-      url: "https://lamethods.org/book2/chapters/ch09-nlp/ch09-nlp.html",
+      url: "https://lamethods.org/book2/",
     },
     {
       html: "Wongvorachan, T., &amp; Bulut, O. (2025). The advanced applications of psychological networks with exploratory graph analysis. In M. Saqr &amp; S. López-Pernas (Eds.), <em>Advanced learning analytics methods. AI, Precision and Complexity </em>(In press). Springer. <a href=\"https://lamethods.org/book2/chapters/ch13-ega/ch13-ega.html\" target=\"_blank\" rel=\"noopener\">https://lamethods.org/book2/chapters/ch13-ega/ch13-ega.html</a>",
       cover: "/assets/img/covers/advanced-learning-analytics-methods.jpg",
-      url: "https://lamethods.org/book2/chapters/ch13-ega/ch13-ega.html",
+      url: "https://lamethods.org/book2/",
     },
     {
       html: "Bulut, O. (2025). Creating value from process data: Implications for multistage testing. In D. Yan, A. von Davier, &amp; D. Weiss (Eds.), <em>Research for practical issues and solutions in computerized multistage testing </em>(pp. 242-261). Routledge. doi:10.4324/9780429263491-16",
@@ -110,7 +110,7 @@ const PUBLICATIONS = {
     {
       html: "Bulut, O. (2024). From adaptive testing to personalized adaptive testing: Applications of recommender systems. In H. Jiao &amp; R. W. Lissitz (Eds.), <a href=\"https://www.infoagepub.com/products/Machine-Learning-Natural-Language-Processing-and-Psychometrics\" target=\"_blank\" rel=\"noopener\"><em>Machine learning, natural language processing, and psychometrics</em></a> (pp. 177-199). Information Age Publishing.",
       cover: "/assets/img/covers/machine-learning-nlp-psychometrics.jpg",
-      url: "https://www.infoagepub.com/products/Machine-Learning-Natural-Language-Processing-and-Psychometrics",
+      url: "https://bookstore.emerald.com/machine-learning-natural-language-processing-and-psychometrics-hb-9798887306056.html",
     },
     {
       html: "Yildirim-Erbasli, S. N., Gorgun, G., &amp; Bulut, O. (2024). <a href=\"https://www.igi-global.com/gateway/chapter/336012\" target=\"_blank\" rel=\"noopener\">Enhancing self-regulated learning with artificial intelligence-powered learning analytics</a>. In N. K. Ulutaş &amp; D. Höl (Eds.), <em>Emergent practices of learning analytics in K-12 classrooms </em>(pp. 57-83).IGI Global. doi:10.4018/979-8-3693-0066-4.ch004.",
@@ -120,7 +120,7 @@ const PUBLICATIONS = {
     {
       html: "Bulut, O., &amp; Cui, Y. (2021). Validating the findings of a survey research study. In U. Luhanga &amp; A. G. Harbaugh (Eds.), <a href=\"https://www.infoagepub.com/products/Basic-Elements-of-Survey-Research-in-Education\" target=\"_blank\" rel=\"noopener\"><em>Basic elements of survey research in education: Addressing the problems your advisor never told you about</em></a>(pp. 719-746).Charlotte, NC: Information Age Publishing.",
       cover: "/assets/img/covers/basic-elements-of-survey-research.jpg",
-      url: "https://www.infoagepub.com/products/Basic-Elements-of-Survey-Research-in-Education",
+      url: "https://bookstore.emerald.com/basic-elements-of-survey-research-in-education-hb-9781648026034.html",
     },
     {
       html: "Gierl, M. J., Bulut, O., &amp; Zhang, X. (2018). <a href=\"https://www.igi-global.com/chapter/using-computerized-formative-testing-to-support-personalized-learning-in-higher-education/199535\" target=\"_blank\" rel=\"noopener\">Using computerized formative testing to support personalized learning in higher education: An application of two assessment technologies</a>. In R. Zheng (Ed.), <a href=\"https://www.igi-global.com/book/digital-technologies-instructional-design-personalized/181915\" target=\"_blank\" rel=\"noopener\"><em>Digital technologies and instructional design for personalized learning</em></a>(pp. 99-119). Hershey, PA: IGI Global. doi:10.4018/978-1-5225-3940-7.ch005",
