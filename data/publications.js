@@ -103,7 +103,7 @@ const PUBLICATIONS = {
       url: "https://doi.org/10.4324/9780429263491-16",
     },
     {
-      html: "Bulut, O., Yildirim-Erbasli, S. N., &amp; Gorgun, G. (2024). Assessment analytics for digital assessments: Identifying, modeling, and interpreting behavioral engagement. In M. Sahin &amp; D. Ifenthaler (Eds.), <a href=\"https://link.springer.com/book/9783031563645\" target=\"_blank\" rel=\"noopener\"><em>Assessment analytics in education – Designs, methods and solutions</em></a>(pp. 35-60). Springer, Cham. <a href=\"https://doi.org/10.1007/978-3-031-56365-2_3\" target=\"_blank\" rel=\"noopener\">https://doi.org/10.1007/978-3-031-56365-2_3</a>",
+      html: "Bulut, O., Yildirim-Erbasli, S. N., &amp; Gorgun, G. (2024). Assessment analytics for digital assessments: Identifying, modeling, and interpreting behavioral engagement. In M. Sahin &amp; D. Ifenthaler (Eds.), <a href=\"https://link.springer.com/book/9783031563645\" target=\"_blank\" rel=\"noopener\"><em>Assessment analytics in education – Designs, methods and solutions</em></a> (pp. 35-60). Springer, Cham. <a href=\"https://doi.org/10.1007/978-3-031-56365-2_3\" target=\"_blank\" rel=\"noopener\">https://doi.org/10.1007/978-3-031-56365-2_3</a>",
       cover: "/assets/img/covers/assessment-analytics-in-education.jpg",
       url: "https://link.springer.com/book/9783031563645",
     },
@@ -118,12 +118,12 @@ const PUBLICATIONS = {
       url: "https://doi.org/10.4018/979-8-3693-0066-4.ch004",
     },
     {
-      html: "Bulut, O., &amp; Cui, Y. (2021). Validating the findings of a survey research study. In U. Luhanga &amp; A. G. Harbaugh (Eds.), <a href=\"https://www.infoagepub.com/products/Basic-Elements-of-Survey-Research-in-Education\" target=\"_blank\" rel=\"noopener\"><em>Basic elements of survey research in education: Addressing the problems your advisor never told you about</em></a>(pp. 719-746).Charlotte, NC: Information Age Publishing.",
+      html: "Bulut, O., &amp; Cui, Y. (2021). Validating the findings of a survey research study. In U. Luhanga &amp; A. G. Harbaugh (Eds.), <a href=\"https://www.infoagepub.com/products/Basic-Elements-of-Survey-Research-in-Education\" target=\"_blank\" rel=\"noopener\"><em>Basic elements of survey research in education: Addressing the problems your advisor never told you about</em></a> (pp. 719-746).Charlotte, NC: Information Age Publishing.",
       cover: "/assets/img/covers/basic-elements-of-survey-research.jpg",
       url: "https://bookstore.emerald.com/basic-elements-of-survey-research-in-education-hb-9781648026034.html",
     },
     {
-      html: "Gierl, M. J., Bulut, O., &amp; Zhang, X. (2018). <a href=\"https://www.igi-global.com/chapter/using-computerized-formative-testing-to-support-personalized-learning-in-higher-education/199535\" target=\"_blank\" rel=\"noopener\">Using computerized formative testing to support personalized learning in higher education: An application of two assessment technologies</a>. In R. Zheng (Ed.), <a href=\"https://www.igi-global.com/book/digital-technologies-instructional-design-personalized/181915\" target=\"_blank\" rel=\"noopener\"><em>Digital technologies and instructional design for personalized learning</em></a>(pp. 99-119). Hershey, PA: IGI Global. doi:10.4018/978-1-5225-3940-7.ch005",
+      html: "Gierl, M. J., Bulut, O., &amp; Zhang, X. (2018). <a href=\"https://www.igi-global.com/chapter/using-computerized-formative-testing-to-support-personalized-learning-in-higher-education/199535\" target=\"_blank\" rel=\"noopener\">Using computerized formative testing to support personalized learning in higher education: An application of two assessment technologies</a>. In R. Zheng (Ed.), <a href=\"https://www.igi-global.com/book/digital-technologies-instructional-design-personalized/181915\" target=\"_blank\" rel=\"noopener\"><em>Digital technologies and instructional design for personalized learning</em></a> (pp. 99-119). Hershey, PA: IGI Global. doi:10.4018/978-1-5225-3940-7.ch005",
       cover: "/assets/img/covers/digital-technologies-instructional-design.jpg",
       url: "https://www.igi-global.com/book/digital-technologies-instructional-design-personalized/181915",
     },
