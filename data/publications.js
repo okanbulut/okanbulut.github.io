@@ -134,6 +134,7 @@ const PUBLICATIONS = {
       year: "2026",
       items: [
         "Bulut, O., &amp; Daniels, L. M. (Accepted). From black boxes to open books: Leveraging explainable AI to sustain student motivation. <em>Educational Studies</em>.",
+        "Mazzullo, E., &amp; Bulut, O. (2026). Diversity and carelessness in LLM-generated psychometric data: Implications for data quality and trust. <em>Computers, 15</em>(9), Artile 562. doi:10.3390/computers15090562",
         "Connolly, D., Salvalaggio, G., Bulut, O., Cottrell-McDermott, C., Hyshka, E., Taylor, M., Piggott, B., Staines, A., Issa, T., Collins, Z., Gehring, N. D., Twan, S., &amp; Morris, H. (2026). Factors associated with willingness of people who smoke unregulated drugs to use supervised inhalation sites. <em>International Journal of Drug Policy, 10</em>, Article 105445. doi:10.1016/j.drugpo.2026.105445",
         "Bulut, O. (2026). Review of the Classic Learning Test 3-8. In J. F. Carlson, K. F. Geisinger, J. L. Jonson, &amp; N. A. Anderson (Eds.), <em>The twenty-second mental measurements yearbook </em>(pp. 167-169). Lincoln, NE: Buros Center for Testing.",
         "Bulut, O. (2026). Review of the Comprehensive Mathematical Abilities Test-Second Edition. In J. F. Carlson, K. F. Geisinger, J. L. Jonson, &amp; N. A. Anderson (Eds.), <em>The twenty-second mental measurements yearbook </em>(pp. 188-190). Lincoln, NE: Buros Center for Testing.",
