@@ -15,7 +15,7 @@
 const NEWS = [
   {
     date: "September 2026",
-    html: "I was on CTV Your Morning to talk about how AI is impacting education: https://www.ctvnews.ca/edmonton/video/2026/09/01/why-ai-is-both-a-tool-and-a-threat-to-education/",
+    html: "I was on <a href="https://www.ctvnews.ca/edmonton/video/2026/09/01/why-ai-is-both-a-tool-and-a-threat-to-education/">CTV Your Morning</a> to talk about how AI is impacting education.",
   },
   {
     date: "June 2026",
