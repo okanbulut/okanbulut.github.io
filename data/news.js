@@ -14,6 +14,10 @@
 
 const NEWS = [
   {
+    date: "September 2026",
+    html: "I was on CTV Your Morning to talk about how AI is impacting education: https://www.ctvnews.ca/edmonton/video/2026/09/01/why-ai-is-both-a-tool-and-a-threat-to-education/",
+  },
+  {
     date: "June 2026",
     html: "Our team presented four papers at the <strong>International Conference on Artificial Intelligence in Education (AIED 2026)</strong> in Seoul, South Korea, including new work on automated quality assurance for LLM-generated feedback.",
   },
@@ -34,3 +38,4 @@ const NEWS = [
     html: "Presented our work on deep reinforcement learning for engagement-aware adaptive assessment at <strong>AIED 2025</strong> in Palermo, Italy.",
   },
 ];
+
