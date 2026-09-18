@@ -133,7 +133,8 @@ const PUBLICATIONS = {
     {
       year: "2026",
       items: [
-        "Bulut, O., &amp; Daniels, L. M. (Accepted). From black boxes to open books: Leveraging explainable AI to sustain student motivation. <em>Educational Studies</em>.",
+        "Bulut, O., &amp; Daniels, L. M. (In press). From black boxes to open books: Leveraging explainable AI to sustain student motivation. <em>Educational Studies</em>.",
+        "Bello, B., Bulut, O., Hindmarch, W., &amp; McCabe, E. (In press). Measurement invariance of the Pediatric Quality of Life Index in a child and adolescent mental health population.<em> Quality of Life Research</em>.",
         "Mazzullo, E., &amp; Bulut, O. (2026). Diversity and carelessness in LLM-generated psychometric data: Implications for data quality and trust. <em>Computers, 15</em>(9), Artile 562. doi:10.3390/computers15090562",
         "Connolly, D., Salvalaggio, G., Bulut, O., Cottrell-McDermott, C., Hyshka, E., Taylor, M., Piggott, B., Staines, A., Issa, T., Collins, Z., Gehring, N. D., Twan, S., &amp; Morris, H. (2026). Factors associated with willingness of people who smoke unregulated drugs to use supervised inhalation sites. <em>International Journal of Drug Policy, 10</em>, Article 105445. doi:10.1016/j.drugpo.2026.105445",
         "Bulut, O. (2026). Review of the Classic Learning Test 3-8. In J. F. Carlson, K. F. Geisinger, J. L. Jonson, &amp; N. A. Anderson (Eds.), <em>The twenty-second mental measurements yearbook </em>(pp. 167-169). Lincoln, NE: Buros Center for Testing.",
@@ -409,7 +410,6 @@ const PUBLICATIONS = {
     "Cankaya, O., Rohatyn-Martin, N., Buro, K., Bulut, O., &amp; Taylor, K. (Under review). Children's play types, duration, and engagement with everyday objects and materials: Examining the relationship between play, cognitive functioning, and executive function performance. Manuscript submitted for publication.",
     "Dong, Y., Bulut, O., &amp; Cui, Y. (Under review). Understanding the role of student characteristics and item facet in creative thinking: An explanatory item response modeling approach. Manuscript submitted for publication.",
     "Liu, J., X., Abroampah, D., &amp; Bulut, O. (Under review). Beyond maximum Fisher information: Exploring response-time-based approaches for item selection in computerized adaptive testing. Manuscript submitted for publication.",
-    "Bello, B., Bulut, O., Hindmarch, W., &amp; McCabe, E. (Under review). Measurement invariance of the Pediatric Quality of Life Index in a child and adolescent mental health population. Manuscript submitted for publication.",
     "Jerez, D., Bulut, O., &amp; Johnson, M. (Under review). From orientation to action: How thinking longer at the start matters for complex problem-solving efficiency. Manuscript submitted for publication.",
   ],
 
