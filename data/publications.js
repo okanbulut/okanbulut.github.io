@@ -134,6 +134,7 @@ const PUBLICATIONS = {
       year: "2026",
       items: [
         "Bulut, O., &amp; Daniels, L. M. (In press). From black boxes to open books: Leveraging explainable AI to sustain student motivation. <em>Educational Studies</em>.",
+        "Yildirim-Erbasli, S. N., Bulut, O., &amp; Ilgun Dibek, M. (In press). Same meaning, different words: Automated item paraphrasing in ESP reading assessment. <em>English for Specific Purposes</em>.",
         "Bello, B., Bulut, O., Hindmarch, W., &amp; McCabe, E. (2026). Measurement invariance of the Pediatric Quality of Life Index in a child and adolescent mental health population.<em> Quality of Life Research, 34</em>, Article 300. doi:10.1007/s11136-026-04403-9",
         "Mazzullo, E., &amp; Bulut, O. (2026). Diversity and carelessness in LLM-generated psychometric data: Implications for data quality and trust. <em>Computers, 15</em>(9), Artile 562. doi:10.3390/computers15090562",
         "Connolly, D., Salvalaggio, G., Bulut, O., Cottrell-McDermott, C., Hyshka, E., Taylor, M., Piggott, B., Staines, A., Issa, T., Collins, Z., Gehring, N. D., Twan, S., &amp; Morris, H. (2026). Factors associated with willingness of people who smoke unregulated drugs to use supervised inhalation sites. <em>International Journal of Drug Policy, 10</em>, Article 105445. doi:10.1016/j.drugpo.2026.105445",
