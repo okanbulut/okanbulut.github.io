@@ -133,6 +133,7 @@ const PUBLICATIONS = {
     {
       year: "2026",
       items: [
+        "Bulut, O. (Accepted). Auditing the chain: Algorithmic opacity, criterion bias, and fairness drift in AI-supported measurement. A commentary on Cheng. <em>Psychometrika</em>.",
         "Bulut, O., &amp; Daniels, L. M. (In press). From black boxes to open books: Leveraging explainable AI to sustain student motivation. <em>Educational Studies</em>.",
         "Yildirim-Erbasli, S. N., Bulut, O., &amp; Ilgun Dibek, M. (In press). Same meaning, different words: Automated item paraphrasing in ESP reading assessment. <em>English for Specific Purposes</em>.",
         "Bello, B., Bulut, O., Hindmarch, W., &amp; McCabe, E. (2026). Measurement invariance of the Pediatric Quality of Life Index in a child and adolescent mental health population.<em> Quality of Life Research, 34</em>, Article 300. doi:10.1007/s11136-026-04403-9",
@@ -412,6 +413,7 @@ const PUBLICATIONS = {
     "Dong, Y., Bulut, O., &amp; Cui, Y. (Under review). Understanding the role of student characteristics and item facet in creative thinking: An explanatory item response modeling approach. Manuscript submitted for publication.",
     "Liu, J., X., Abroampah, D., &amp; Bulut, O. (Under review). Beyond maximum Fisher information: Exploring response-time-based approaches for item selection in computerized adaptive testing. Manuscript submitted for publication.",
     "Jerez, D., Bulut, O., &amp; Johnson, M. (Under review). From orientation to action: How thinking longer at the start matters for complex problem-solving efficiency. Manuscript submitted for publication.",
+    "Vo, K., &amp; Bulut, O. (Under review). Chatbots in teacher education and professional development: A scoping review of applications and evaluation approaches. Manuscript submitted for publication.",
   ],
 
 };
