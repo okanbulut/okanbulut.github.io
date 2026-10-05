@@ -133,6 +133,7 @@ const PUBLICATIONS = {
     {
       year: "2026",
       items: [
+        "Jerez, D., Bulut, O., &amp; Johnson, M. (Accepted). From orientation to action: How thinking longer at the start matters for complex problem-solving efficiency. <em>Intelligence</em>.",
         "Bulut, O. (Accepted). Auditing the chain: Algorithmic opacity, criterion bias, and fairness drift in AI-supported measurement. A commentary on Cheng. <em>Psychometrika</em>.",
         "Bulut, O., &amp; Daniels, L. M. (In press). From black boxes to open books: Leveraging explainable AI to sustain student motivation. <em>Educational Studies</em>.",
         "Yildirim-Erbasli, S. N., Ilgun Dibek, M., &amp; Bulut, O. (In press). Same meaning, different words: Automated item paraphrasing in ESP reading assessment. <em>English for Specific Purposes</em>.",
@@ -412,7 +413,6 @@ const PUBLICATIONS = {
     "Cankaya, O., Rohatyn-Martin, N., Buro, K., Bulut, O., &amp; Taylor, K. (Under review). Children's play types, duration, and engagement with everyday objects and materials: Examining the relationship between play, cognitive functioning, and executive function performance. Manuscript submitted for publication.",
     "Dong, Y., Bulut, O., &amp; Cui, Y. (Under review). Understanding the role of student characteristics and item facet in creative thinking: An explanatory item response modeling approach. Manuscript submitted for publication.",
     "Liu, J., X., Abroampah, D., &amp; Bulut, O. (Under review). Beyond maximum Fisher information: Exploring response-time-based approaches for item selection in computerized adaptive testing. Manuscript submitted for publication.",
-    "Jerez, D., Bulut, O., &amp; Johnson, M. (Under review). From orientation to action: How thinking longer at the start matters for complex problem-solving efficiency. Manuscript submitted for publication.",
     "Vo, K., &amp; Bulut, O. (Under review). Chatbots in teacher education and professional development: A scoping review of applications and evaluation approaches. Manuscript submitted for publication.",
   ],
 
