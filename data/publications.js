@@ -414,6 +414,7 @@ const PUBLICATIONS = {
     "Dong, Y., Bulut, O., &amp; Cui, Y. (Under review). Understanding the role of student characteristics and item facet in creative thinking: An explanatory item response modeling approach. Manuscript submitted for publication.",
     "Liu, J., X., Abroampah, D., &amp; Bulut, O. (Under review). Beyond maximum Fisher information: Exploring response-time-based approaches for item selection in computerized adaptive testing. Manuscript submitted for publication.",
     "Vo, K., &amp; Bulut, O. (Under review). Chatbots in teacher education and professional development: A scoping review of applications and evaluation approaches. Manuscript submitted for publication.",
+    "Deribo, T., Bulut, O., &amp; Arslan, B. (Under review). Motivational test instructions and conditional structure of cognitive disengagement in low-stakes assessments. Manuscript submitted for publication.",
   ],
 
 };
