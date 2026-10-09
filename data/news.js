@@ -14,6 +14,10 @@
 
 const NEWS = [
   {
+  date: "October 2026",
+  html: "I attended <a href='https://ncme.org/events/aime-conference/'>AIME-Con 2026</a> in Pittsburgh, PA during the first week of October. The conference was full of inspiring presentations and discussions. The conference proceedings, also including our study titled 'The Scoring Paradox: Multi-Agent Architectures for Unbiased Feedback Optimization', are available at <a href='https://aclanthology.org/volumes/2026.aimecon-sessions/'>the ACL website</a>.",
+  },
+  {
   date: "September 2026",
   html: "I was on <a href='https://www.ctvnews.ca/edmonton/video/2026/09/01/why-ai-is-both-a-tool-and-a-threat-to-education/'>CTV Your Morning</a> to talk about <strong>how AI is impacting education</strong>. We talked about the benefits of AI (e.g., efficiency) and potential drawbacks (e.g., cognitive offloading).",
   },
