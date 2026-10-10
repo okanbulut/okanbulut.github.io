@@ -407,6 +407,7 @@ const PUBLICATIONS = {
   ],
 
   underReview: [
+    "Bulut, O., &amp; Walsh, C. (Under review). Beyond the text: Validating AI-generated feedback with evidence from quality assurance, score prediction, and student engagement. Manuscript submitted for publication.",
     "Bulut, O., Clelland, A., &amp; Wongvorachan, T. (Under review). A human-in-the-loop framework for generating actionable insights to improve Canadian students’ mathematics outcomes. Manuscript submitted for publication.",
     "Tan, B., Liu, X., &amp; Bulut, O. (Under review). Uncovering behavioral signals of early test quitting in digital assessments: A deep learning and n-gram approach. Manuscript submitted for publication.",
     "Aydin, B., Kisla, T., Elmas, N., Boylu, E., &amp; Bulut, O. (Under review). Large language models as mediators: Addressing rater disagreement in Turkish essay scoring. Manuscript submitted for publication.",
