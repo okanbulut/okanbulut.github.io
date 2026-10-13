@@ -35,6 +35,7 @@ const PRESENTATIONS = {
     {
       year: "2026",
       items: [
+        "Bulut, O., Tan, B., Mazzullo, E., &amp; Walsh, C. (2026, October). The scoring paradox: Multi-agent architectures for unbiased feedback optimization. Paper presented at the Artificial Intelligence in Measurement and Education Conference (AIME-Con), Pittsburgh, PA.",
         "Bulut, O., &amp; Walsh, C. (2026, June). A multi-agent system for feedback quality assurance: Evaluate, revise, and validate at scale. Paper presented at the Impactful and Responsible AI Systems for Education Workshop at the Festival of Learning, Seoul, South Korea.",
         "Bulut, O., &amp; Walsh, C. (2026, June). Closing the feedback loop: Automated quality assurance for LLM-generated feedback. Poster presented at the annual meeting of the International Conference on AI in Education, Seoul, South Korea.",
         "Bulut, O., Tan, B., &amp; Yildirim-Erbasli, S. (2026, June). Does conversation-based assessment elicit higher-level thinking? Evidence from expert and LLM ratings. Poster presented at the annual meeting of the International Conference on AI in Education, Seoul, South Korea.",

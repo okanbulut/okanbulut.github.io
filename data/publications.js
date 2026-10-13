@@ -133,10 +133,10 @@ const PUBLICATIONS = {
     {
       year: "2026",
       items: [
-        "Jerez, D., Bulut, O., &amp; Johnson, M. (Accepted). From orientation to action: How thinking longer at the start matters for complex problem-solving efficiency. <em>Intelligence</em>.",
-        "Bulut, O. (Accepted). Auditing the chain: Algorithmic opacity, criterion bias, and fairness drift in AI-supported measurement. A commentary on Cheng. <em>Psychometrika</em>.",
+        "Bulut, O. (In press). Auditing the chain: Algorithmic opacity, criterion bias, and fairness drift in AI-supported measurement. A commentary on Cheng. <em>Psychometrika</em>.",
         "Bulut, O., &amp; Daniels, L. M. (In press). From black boxes to open books: Leveraging explainable AI to sustain student motivation. <em>Educational Studies</em>.",
-        "Yildirim-Erbasli, S. N., Ilgun Dibek, M., &amp; Bulut, O. (In press). Same meaning, different words: Automated item paraphrasing in ESP reading assessment. <em>English for Specific Purposes</em>.",
+        "Jerez, D., Bulut, O., &amp; Johnson, M. (2026). From orientation to action: How thinking longer at the start matters for complex problem-solving efficiency. <em>Intelligence, 119,</em> Article 102074. doi:10.1016/j.intell.2026.102074",
+        "Yildirim-Erbasli, S. N., Ilgun Dibek, M., &amp; Bulut, O. (2026). Same meaning, different words: Automated item paraphrasing in ESP reading assessment. <em>English for Specific Purposes, 85, </em> 71-81. doi:10.1016/j.esp.2026.09.003",
         "Deribo, T., Bulut, O., &amp; Arslan, B. (2026). Motivational test instructions and conditional structure of cognitive disengagement in low-stakes assessments. <em>PsychArchives</em>. doi:10.23668/psycharchives.22563",
         "Bello, B., Bulut, O., Hindmarch, W., &amp; McCabe, E. (2026). Measurement invariance of the Pediatric Quality of Life Index in a child and adolescent mental health population.<em> Quality of Life Research, 34</em>, Article 300. doi:10.1007/s11136-026-04403-9",
         "Mazzullo, E., &amp; Bulut, O. (2026). Diversity and carelessness in LLM-generated psychometric data: Implications for data quality and trust. <em>Computers, 15</em>(9), Article 562. doi:10.3390/computers15090562",
