@@ -1,0 +1,4 @@
+# Only this folder is served as static files. The search index in data/ is
+# bundled into the function (vercel.json → includeFiles) and is never public.
+User-agent: *
+Disallow: /

@@ -127,5 +127,6 @@ after `main.js` on those pages. Commit and push, and the site updates.
 | `rag/ingest/ingest.mjs` | PDF → text → chunks → keyword index |
 | `rag/vercel/api/chat.js` | The chat endpoint: Claude, the search tool, streaming |
 | `rag/vercel/lib/search.js` | Tokenizer and BM25 search (shared with the ingest) |
-| `rag/vercel/data/index.json` | The built index (git-ignored; deployed with the function) |
+| `rag/vercel/data/index.json` | The built index (git-ignored; bundled into the function, never served as a file) |
+| `rag/vercel/public/` | The only folder Vercel serves as static files (`outputDirectory` in `vercel.json`). Keep data out of it. |
 | `assets/js/chat.js` | The chat widget (styles at the end of `assets/css/style.css`) |
