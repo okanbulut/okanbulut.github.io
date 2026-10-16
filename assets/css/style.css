@@ -1421,3 +1421,110 @@ a.chat-cite:hover { background: var(--accent); color: var(--on-accent); }
 @media (prefers-reduced-motion: reduce) {
   .chat-typing span { animation: none; opacity: 0.6; }
 }
+
+/* ---------- co-author network (assets/js/network.js, Research page) ---------- */
+
+.nw-controls {
+  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 22px;
+  margin-bottom: 14px; font-size: 0.85rem; color: var(--text-soft);
+}
+.nw-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.nw-field output { font-weight: 600; color: var(--text); margin-left: 4px; }
+.nw-field input[type="range"] { accent-color: var(--accent); width: 150px; max-width: 100%; }
+.nw-range2 { display: flex; gap: 8px; }
+.nw-range2 input[type="range"] { width: 120px; }
+.nw-search input {
+  width: 230px; max-width: 100%; padding: 8px 12px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  background: var(--bg); color: var(--text); font: 0.88rem var(--font-body);
+}
+.nw-search input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.nw-types { border: 0; flex-direction: row; gap: 14px; padding: 0; }
+.nw-types legend { padding: 0; margin-bottom: 6px; }
+.nw-types label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.nw-types input { accent-color: var(--accent); }
+
+.nw-stage {
+  position: relative; height: 580px; overflow: hidden;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--bg-raised); box-shadow: var(--shadow-sm);
+}
+.nw-svg { display: block; width: 100%; height: 100%; cursor: grab; }
+.nw-svg:active { cursor: grabbing; }
+
+.nw-link { stroke: var(--border-strong); stroke-opacity: 0.55; transition: stroke-opacity var(--transition); }
+.nw-link-center { stroke: var(--accent); stroke-opacity: 0.16; }
+.nw-node { cursor: pointer; outline: none; transition: opacity var(--transition); }
+.nw-node circle { stroke: var(--bg-raised); stroke-width: 1.5; }
+.nw-node:focus-visible circle { stroke: var(--accent-2); stroke-width: 3; }
+.nw-center circle { fill: var(--text); stroke: var(--accent); stroke-width: 3; }
+.nw-current circle { fill: var(--accent); }
+.nw-alumni circle { fill: var(--accent-2); }
+.nw-collaborator circle { fill: var(--muted); fill-opacity: 0.8; }
+.nw-node text {
+  display: none; pointer-events: none;
+  font: 500 11px var(--font-body); fill: var(--text-soft);
+  paint-order: stroke; stroke: var(--bg-raised); stroke-width: 3px; stroke-linejoin: round;
+}
+.nw-node.has-label text, .nw-node:hover text, .nw-node:focus-visible text { display: block; }
+.nw-center text { font-size: 12.5px; font-weight: 700; fill: var(--text); }
+
+.has-selection .nw-node { opacity: 0.15; }
+.has-selection .nw-node.is-active { opacity: 1; }
+.has-selection .nw-node.is-active text { display: block; fill: var(--text); }
+.has-selection .nw-link { stroke-opacity: 0.04; }
+.has-selection .nw-link.is-active { stroke: var(--accent); stroke-opacity: 0.85; }
+.nw-node.is-selected circle { stroke: var(--text); stroke-width: 2.5; }
+
+.nw-zoom { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; gap: 4px; }
+.nw-zoom button {
+  width: 30px; height: 30px; border: 1px solid var(--border-strong); border-radius: 8px;
+  background: var(--bg); color: var(--text-soft); font: 600 1rem var(--font-body); cursor: pointer;
+}
+.nw-zoom button:hover { border-color: var(--accent); color: var(--accent); }
+
+.nw-tooltip {
+  position: absolute; pointer-events: none; z-index: 2;
+  padding: 5px 9px; border-radius: 7px; white-space: nowrap;
+  background: var(--text); color: var(--bg); font-size: 0.78rem; font-weight: 500;
+}
+.nw-tooltip[hidden] { display: none; }
+
+.nw-panel {
+  position: absolute; top: 10px; right: 10px; bottom: 10px; width: min(340px, calc(100% - 20px));
+  overflow-y: auto; padding: 16px 18px; z-index: 3;
+  background: var(--bg); border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+.nw-panel[hidden] { display: none; }
+.nw-panel h3 { font-family: var(--font-display); font-size: 1.05rem; padding-right: 26px; }
+.nw-meta { color: var(--muted); font-size: 0.8rem; margin: 2px 0 10px; }
+.nw-panel ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.nw-panel li { display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; font-size: 0.82rem; line-height: 1.45; color: var(--text-soft); }
+.nw-year { font-weight: 600; color: var(--text); white-space: nowrap; }
+.nw-tag { grid-column: 2; justify-self: start; font-size: 0.68rem; font-weight: 600; padding: 0 6px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
+.nw-tag-presentation { background: var(--bg-soft); color: var(--muted); }
+.nw-close {
+  position: absolute; top: 10px; right: 10px; width: 28px; height: 28px;
+  border: 0; border-radius: 8px; background: transparent; color: var(--text-soft); font-size: 1.2rem; cursor: pointer;
+}
+.nw-close:hover { background: var(--accent-soft); color: var(--accent); }
+
+.nw-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; margin-top: 12px; font-size: 0.82rem; }
+.nw-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--text-soft); }
+.nw-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.nw-swatch { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.nw-swatch.nw-center { background: var(--text); box-shadow: 0 0 0 2px var(--accent); }
+.nw-swatch.nw-current { background: var(--accent); }
+.nw-swatch.nw-alumni { background: var(--accent-2); }
+.nw-swatch.nw-collaborator { background: var(--muted); }
+.nw-stats { color: var(--text); font-weight: 600; }
+.nw-hint { color: var(--muted); width: 100%; }
+
+@media (max-width: 640px) {
+  .nw-stage { height: 440px; }
+  .nw-field input[type="range"], .nw-search input { width: 100%; }
+  .nw-range2 input[type="range"] { width: calc(50% - 4px); }
+  .nw-field, .nw-search { width: 100%; }
+  .nw-panel { top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; max-height: 58%; }
+}

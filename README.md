@@ -53,6 +53,7 @@ the CV page points there.
 | All styling (light + dark themes) | `assets/css/style.css` |
 | Site behavior (theme toggle, rendering, search) | `assets/js/main.js` |
 | Research chatbot (widget, Vercel function, PDF ingest) | `assets/js/chat.js`, `rag/` — setup in `rag/README.md` |
+| Co-author network (Research page) | `assets/js/network.js` — built automatically from `data/publications.js` and `data/presentations.js`; students/advisees colored from the Lab and Alumni sections. If one person shows up twice under different spellings, add them to `NAME_ALIASES` at the top of the file. |
 
 ## Notes
 
