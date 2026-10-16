@@ -52,6 +52,7 @@ the CV page points there.
 | Contact info and links | `contact/index.html` |
 | All styling (light + dark themes) | `assets/css/style.css` |
 | Site behavior (theme toggle, rendering, search) | `assets/js/main.js` |
+| Research chatbot (widget, Vercel function, PDF ingest) | `assets/js/chat.js`, `rag/` — setup in `rag/README.md` |
 
 ## Notes
 

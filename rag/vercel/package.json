@@ -1,0 +1,13 @@
+{
+  "name": "okanbulut-research-chat",
+  "private": true,
+  "type": "module",
+  "description": "Vercel function behind the 'Ask about my research' chat widget.",
+  "engines": {
+    "node": "24.x"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.131.0",
+    "stemmer": "2.0.1"
+  }
+}

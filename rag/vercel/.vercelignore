@@ -1,0 +1,5 @@
+# Upload only what the function needs. data/index.json is uploaded on purpose
+# (it is git-ignored, but the deployment needs it); node_modules is reinstalled
+# by Vercel from package.json.
+node_modules
+.env*

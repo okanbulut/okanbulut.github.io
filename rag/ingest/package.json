@@ -1,0 +1,13 @@
+{
+  "name": "okanbulut-rag-ingest",
+  "private": true,
+  "type": "module",
+  "description": "Turns the PDFs in rag/papers/ into embedded chunks in Cloudflare Vectorize.",
+  "scripts": {
+    "dry-run": "node ingest.mjs --dry-run",
+    "ingest": "node ingest.mjs"
+  },
+  "dependencies": {
+    "unpdf": "1.8.1"
+  }
+}

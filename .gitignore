@@ -1,2 +1,11 @@
 # Local Claude Code tooling — not part of the website
 .claude/
+
+# Research chatbot (rag/) — private PDFs, build output, secrets, dependencies
+rag/papers/*
+!rag/papers/README.md
+rag/ingest/out/
+rag/**/node_modules/
+rag/vercel/data/
+rag/**/.vercel/
+rag/**/.env
