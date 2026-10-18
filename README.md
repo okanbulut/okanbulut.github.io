@@ -47,7 +47,7 @@ the CV page points there.
 | Publications page shell | `publications/index.html` (content comes from `data/publications.js`) |
 | Presentations page shell | `presentations/index.html` (content comes from `data/presentations.js`) |
 | Software projects | `software/index.html` |
-| Blog (lists posts from okan.cloud) | `blog/index.html` + `assets/js/blog.js` — reads the blog's RSS feed (`https://okan.cloud/index.xml`) in the browser, so new posts appear automatically after the blog is published |
+| Blog (lists posts from okan.cloud) | `posts/index.html` + `assets/js/blog.js` (at `/posts/`, because the `okanbulut/blog` repo already owns `okanbulut.com/blog/`) — reads the blog's RSS feed (`https://okan.cloud/index.xml`) in the browser, so new posts appear automatically after the blog is published |
 | Teaching (courses, workshops, training) | `teaching/index.html` |
 | CV (education, awards, editorial roles) | `cv/index.html` |
 | Contact info and links | `contact/index.html` |
