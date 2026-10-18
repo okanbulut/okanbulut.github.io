@@ -175,7 +175,8 @@ h1, h2, h3, h4 {
 
 .nav-burger { display: none; }
 
-@media (max-width: 900px) {
+/* The full menu needs ~990px; below that it collapses into the burger. */
+@media (max-width: 1020px) {
   .nav-burger { display: inline-flex; }
   .site-nav {
     position: absolute;
@@ -1527,4 +1528,61 @@ a.chat-cite:hover { background: var(--accent); color: var(--on-accent); }
   .nw-range2 input[type="range"] { width: calc(50% - 4px); }
   .nw-field, .nw-search { width: 100%; }
   .nw-panel { top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; max-height: 58%; }
+}
+
+/* ---------- blog page (assets/js/blog.js) ---------- */
+
+.blog-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.blog-filters[hidden] { display: none; }
+.blog-chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px;
+  border: 1px solid var(--border-strong); border-radius: 999px;
+  background: var(--bg-raised); color: var(--text-soft);
+  font: 500 0.86rem var(--font-body); text-transform: capitalize; cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+.blog-chip:hover { border-color: var(--accent); color: var(--accent); }
+.blog-chip.is-active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.blog-chip-count { font-size: 0.74rem; font-weight: 600; opacity: 0.75; }
+.blog-chip:focus-visible, .blog-tag:focus-visible, .blog-title a:focus-visible, .blog-more:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+.blog-card {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition);
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.blog-thumb { display: block; aspect-ratio: 16 / 9; background: var(--bg-soft); overflow: hidden; }
+.blog-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.blog-card:hover .blog-thumb img { transform: scale(1.03); }
+.blog-thumb.no-image { background: var(--gradient); opacity: 0.85; }
+.blog-body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 18px 20px 20px; }
+.blog-meta { color: var(--muted); font-size: 0.8rem; }
+.blog-title { font-family: var(--font-display); font-size: 1.12rem; line-height: 1.3; }
+.blog-title a { color: var(--text); text-decoration: none; }
+.blog-title a:hover { color: var(--accent); }
+.blog-desc {
+  color: var(--text-soft); font-size: 0.9rem; line-height: 1.55;
+  display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
+.blog-with { color: var(--muted); font-size: 0.82rem; font-style: italic; }
+.blog-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.blog-tag {
+  padding: 2px 9px; border: 0; border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+  font: 500 0.74rem var(--font-body); cursor: pointer;
+}
+.blog-tag:hover, .blog-tag.is-active { background: var(--accent); color: var(--on-accent); }
+.blog-more { margin-top: auto; padding-top: 6px; font-size: 0.88rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+.blog-more:hover { text-decoration: underline; }
+.blog-status { color: var(--text-soft); }
+.blog-filter-note { grid-column: 1 / -1; color: var(--text-soft); font-size: 0.9rem; }
+.blog-show-all { border: 0; background: none; padding: 0; color: var(--accent); font: 600 0.9rem var(--font-body); cursor: pointer; text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .blog-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-card, .blog-card:hover, .blog-thumb img, .blog-card:hover .blog-thumb img { transform: none; transition: none; }
 }
