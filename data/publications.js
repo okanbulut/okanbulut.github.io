@@ -103,7 +103,7 @@ const PUBLICATIONS = {
       url: "https://doi.org/10.4324/9780429263491-16",
     },
     {
-      html: "Bulut, O., Yildirim-Erbasli, S. N., &amp; Gorgun, G. (2024). Assessment analytics for digital assessments: Identifying, modeling, and interpreting behavioral engagement. In M. Sahin &amp; D. Ifenthaler (Eds.), <a href=\"https://link.springer.com/book/9783031563645\" target=\"_blank\" rel=\"noopener\"><em>Assessment analytics in education – Designs, methods and solutions</em></a> (pp. 35-60). Springer, Cham. <a href=\"https://doi.org/10.1007/978-3-031-56365-2_3\" target=\"_blank\" rel=\"noopener\">https://doi.org/10.1007/978-3-031-56365-2_3</a>",
+      html: "Bulut, O., Yildirim-Erbasli, S. N., &amp; Gorgun, G. (2024). Assessment analytics for digital assessments: Identifying, modeling, and interpreting behavioral engagement. In M. Sahin &amp; D. Ifenthaler (Eds.), <a href=\"https://link.springer.com/book/9783031563645\" target=\"_blank\" rel=\"noopener\"><em>Assessment analytics in education – Designs, methods and solutions</em></a> (pp. 35-60). Springer, Cham. doi:10.1007/978-3-031-56365-2_3",
       cover: "/assets/img/covers/assessment-analytics-in-education.jpg",
       url: "https://link.springer.com/book/9783031563645",
     },
@@ -113,7 +113,7 @@ const PUBLICATIONS = {
       url: "https://bookstore.emerald.com/machine-learning-natural-language-processing-and-psychometrics-hb-9798887306056.html",
     },
     {
-      html: "Yildirim-Erbasli, S. N., Gorgun, G., &amp; Bulut, O. (2024). <a href=\"https://www.igi-global.com/gateway/chapter/336012\" target=\"_blank\" rel=\"noopener\">Enhancing self-regulated learning with artificial intelligence-powered learning analytics</a>. In N. K. Ulutaş &amp; D. Höl (Eds.), <em>Emergent practices of learning analytics in K-12 classrooms </em>(pp. 57-83).IGI Global. doi:10.4018/979-8-3693-0066-4.ch004.",
+      html: "Yildirim-Erbasli, S. N., Gorgun, G., &amp; Bulut, O. (2024). <a href=\"https://www.igi-global.com/gateway/chapter/336012\" target=\"_blank\" rel=\"noopener\">Enhancing self-regulated learning with artificial intelligence-powered learning analytics</a>. In N. K. Ulutaş &amp; D. Höl (Eds.), <em>Emergent practices of learning analytics in K-12 classrooms </em>(pp. 57-83). IGI Global. doi:10.4018/979-8-3693-0066-4.ch004.",
       cover: "/assets/img/covers/emergent-practices-learning-analytics-k12.jpg",
       url: "https://doi.org/10.4018/979-8-3693-0066-4.ch004",
     },
