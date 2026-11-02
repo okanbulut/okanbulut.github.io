@@ -34,7 +34,7 @@ const PUBLICATIONS = {
   books: [
     "Bulut, O., Shin, J., &amp; Yildirim-Erbasli, S. (In preparation). <em>Educational data mining: Applications in digital assessments</em>. Boca Raton, FL: CRC Press.",
     {
-      html: "Bulut, O. (2026). <em>Item response theory with mirt and mirtverse</em>. GitHub. https://www.okanbulut.com/mirtverse/book/index.html",
+      html: "Bulut, O. (2026). <em>Item response theory with mirt and mirtverse: Notes for teaching and learning.</em>. Zenodo. https://doi.org/10.5281/zenodo.23885605",
       cover: "/assets/img/covers/mirtverse.jpg",
       url: "https://www.okanbulut.com/mirtverse/book/index.html",
     },
