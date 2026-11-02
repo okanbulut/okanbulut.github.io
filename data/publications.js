@@ -34,6 +34,11 @@ const PUBLICATIONS = {
   books: [
     "Bulut, O., Shin, J., &amp; Yildirim-Erbasli, S. (In preparation). <em>Educational data mining: Applications in digital assessments</em>. Boca Raton, FL: CRC Press.",
     {
+      html: "Bulut, O. (2026). <em>Item response theory with mirt and mirtverse</em>. GitHub. https://www.okanbulut.com/mirtverse/book/index.html",
+      cover: "/assets/img/covers/mirtverse.png",
+      url: "https://www.okanbulut.com/mirtverse/book/index.html",
+    },
+    {
       html: "Bulut, O. (2024). <em>Psycho-educational assessments: Theory and practice</em>. MDPI. https://doi.org/10.3390/books978-3-7258-0551-8",
       cover: "/assets/img/covers/psycho-educational-assessments.jpg",
       url: "https://doi.org/10.3390/books978-3-7258-0551-8",

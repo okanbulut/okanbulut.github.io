@@ -14,6 +14,10 @@
 
 const NEWS = [
   {
+  date: "November 2026",
+  html: "I released <a href='https://www.okanbulut.com/mirtverse/'>mirtverse</a> as a friendly workflow and reporting layer for the mirt package in R. Along with the package, I posted interactive labs for students, several materials for instructors who may use mirtverse to teach item response theory, and an online book, titled <a href='https://www.okanbulut.com/mirtverse/book/index.html'>Item Response Theory with mirt and mirtverse</a>.",
+  },
+  {
   date: "October 2026",
   html: "I attended <a href='https://ncme.org/events/aime-conference/'>AIME-Con 2026</a> in Pittsburgh, PA during the first week of October. The conference was full of inspiring presentations and discussions. The conference proceedings, also including our study titled 'The Scoring Paradox: Multi-Agent Architectures for Unbiased Feedback Optimization', are available at <a href='https://aclanthology.org/volumes/2026.aimecon-sessions/'>the ACL website</a>.",
   },
