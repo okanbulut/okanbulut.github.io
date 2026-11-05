@@ -139,16 +139,57 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="prospective-students">
     <div class="container">
-      <div class="callout reveal">
-        <h3>Prospective students</h3>
-        <p>
-          Interested in joining my research lab? Please review the
-          <a href="../research/">current research projects</a> first, then email me with a
-          brief description of your background, your research interests, and how they align
-          with the lab's work.
+      <div class="section-head reveal">
+        <div class="eyebrow">Prospective students</div>
+        <h2>Thinking about joining the lab?</h2>
+        <p class="sub">
+          My research program starts from <strong>computational psychometrics, educational
+          measurement, and assessment</strong>, and connects them to learning analytics,
+          artificial intelligence, and large language models. Measurement is the anchor;
+          the newer methods are how we extend it.
         </p>
+      </div>
+
+      <div class="card-grid two">
+        <div class="card fit-card fit-yes reveal">
+          <h3>You'll likely be a good fit if you want to…</h3>
+          <ul class="fit-list">
+            <li>Study how we measure learning: designing, scoring, validating, or improving assessments</li>
+            <li>Use AI and large language models to answer measurement questions, and check whether their outputs are valid, reliable, and fair</li>
+            <li>Bring psychometric models such as item response theory to new kinds of data, including learning-analytics and process data</li>
+            <li>Build strong quantitative and programming skills (R, Python) in service of those questions</li>
+          </ul>
+        </div>
+        <div class="card fit-card fit-no reveal">
+          <h3>This lab is probably not the right match if…</h3>
+          <ul class="fit-list">
+            <li>Your interest is pure data mining, learning analytics, or LLM research without a measurement or assessment question at its core</li>
+            <li>You are looking broadly for educational technology or data science training</li>
+            <li>You want to carry out a research proposal you have already written. Incoming students do not start with a pre-set project; we shape your research together once you join.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout checklist-box reveal">
+        <h3>Before you email me: A quick checklist</h3>
+        <p>
+          I receive many messages from prospective students, and the ones that stand out are
+          specific, personal, and clearly written for this lab. Tick off each item before you write.
+        </p>
+        <ul class="checklist" id="student-checklist">
+          <li><label><input type="checkbox"> <span>I have read at least two of the <a href="../publications/">lab's recent papers</a> and can say what interested me about them.</span></label></li>
+          <li><label><input type="checkbox"> <span>My interests connect to measurement, psychometrics, or assessment, not only to AI, data mining, or learning analytics.</span></label></li>
+          <li><label><input type="checkbox"> <span>My email is in my own words. I am not repeating phrases from this website back to you.</span></label></li>
+          <li><label><input type="checkbox"> <span>I am not attaching a research proposal. I describe the questions that excite me instead.</span></label></li>
+          <li><label><input type="checkbox"> <span>I briefly describe my background: degrees, methods or statistics training, and programming experience.</span></label></li>
+          <li><label><input type="checkbox"> <span>I mention the program and the term I plan to apply for, and I attach my CV.</span></label></li>
+        </ul>
+        <div class="checklist-foot">
+          <span class="checklist-status" id="checklist-status" aria-live="polite">Work through the list above.</span>
+          <a class="btn btn-primary" href="mailto:bulut@ualberta.ca?subject=Prospective%20student%20inquiry">Email me</a>
+        </div>
       </div>
     </div>
   </section>
@@ -177,5 +218,26 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script>
+  (function () {
+    var list = document.getElementById("student-checklist");
+    var status = document.getElementById("checklist-status");
+    if (!list || !status) return;
+    var boxes = list.querySelectorAll('input[type="checkbox"]');
+    function update() {
+      var done = 0;
+      boxes.forEach(function (b) { if (b.checked) done++; });
+      if (done === boxes.length) {
+        status.textContent = "All set. I look forward to hearing from you!";
+        status.classList.add("is-done");
+      } else {
+        status.textContent = done + " of " + boxes.length + " checked";
+        status.classList.remove("is-done");
+      }
+    }
+    boxes.forEach(function (b) { b.addEventListener("change", update); });
+    update();
+  })();
+</script>
 </body>
 </html>
