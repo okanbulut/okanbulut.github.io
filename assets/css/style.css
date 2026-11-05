@@ -1590,6 +1590,7 @@ a.chat-cite:hover { background: var(--accent); color: var(--on-accent); }
 
 /* ---------- prospective students (contact) ---------- */
 
+#prospective-students .section-head p.sub { max-width: none; }
 .fit-card h3 { margin-bottom: 14px; }
 .fit-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .fit-list li {
