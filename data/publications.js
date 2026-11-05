@@ -140,7 +140,7 @@ const PUBLICATIONS = {
       items: [
         "Bulut, O. (In press). Auditing the chain: Algorithmic opacity, criterion bias, and fairness drift in AI-supported measurement. A commentary on Cheng. <em>Psychometrika</em>.",
         "Bulut, O., &amp; Daniels, L. M. (In press). From black boxes to open books: Leveraging explainable AI to sustain student motivation. <em>Educational Studies Moscow</em>.",
-        "Bulut, O. (2026). mirtverse: Accessible, AI-ready item response theory in R with mirt. <em>PsyArXiv</em>. doi:osf.io/preprints/psyarxiv/j9ya7_v1",
+        "Bulut, O. (2026). mirtverse: Accessible, AI-ready item response theory in R with mirt. <em>PsyArXiv</em>. doi:10.31234/osf.io/j9ya7_v1",
         "Jerez, D., Bulut, O., &amp; Johnson, M. (2026). From orientation to action: How thinking longer at the start matters for complex problem-solving efficiency. <em>Intelligence, 119,</em> Article 102074. doi:10.1016/j.intell.2026.102074",
         "Yildirim-Erbasli, S. N., Ilgun Dibek, M., &amp; Bulut, O. (2026). Same meaning, different words: Automated item paraphrasing in ESP reading assessment. <em>English for Specific Purposes, 85, </em> 71-81. doi:10.1016/j.esp.2026.09.003",
         "Deribo, T., Bulut, O., &amp; Arslan, B. (2026). Motivational test instructions and conditional structure of cognitive disengagement in low-stakes assessments. <em>PsychArchives</em>. doi:10.23668/psycharchives.22563",
