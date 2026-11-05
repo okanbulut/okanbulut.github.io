@@ -1616,7 +1616,7 @@ a.chat-cite:hover { background: var(--accent); color: var(--on-accent); }
 .fit-no { border-top: 3px solid var(--border-strong); }
 .fit-no .fit-list li::before { content: "✕"; background: var(--bg-soft); color: var(--muted); }
 
-.checklist-box { margin-top: 28px; }
+.checklist-box { margin-top: 28px; scroll-margin-top: 90px; }
 .checklist-box p { max-width: none; }
 .checklist { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
 .checklist label {
