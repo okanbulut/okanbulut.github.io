@@ -45,7 +45,7 @@
     return a;
   }
 
-  var launcher = el("button", "chat-launcher", { type: "button", "aria-expanded": "false", "aria-controls": "chat-panel" });
+  var launcher = el("button", "chat-launcher", { type: "button", title: "Ask about my research", "aria-expanded": "false", "aria-controls": "chat-panel" });
   launcher.innerHTML = BOT_ICON + "<span>Ask about my research</span>";
 
   var panel = el("section", "chat-panel", { id: "chat-panel", role: "dialog", "aria-label": "Ask about Okan Bulut's research", hidden: "" });

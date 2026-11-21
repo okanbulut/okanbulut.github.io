@@ -334,4 +334,14 @@
 
   var yearEl = document.getElementById("footer-year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------- last updated (from the server's Last-Modified header) ---------- */
+
+  var updEl = document.getElementById("last-updated");
+  var updated = new Date(document.lastModified);
+  // Browsers report "now" when the server sends no Last-Modified header; skip that case.
+  if (updEl && !isNaN(updated) && Date.now() - updated.getTime() > 60000) {
+    updEl.textContent = updated.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+    updEl.parentNode.hidden = false;
+  }
 })();

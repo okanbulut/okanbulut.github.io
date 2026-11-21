@@ -5,8 +5,8 @@
    ========================================================================== */
 
 :root {
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Space Grotesk", var(--font-body);
+  --font-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
   --radius: 16px;
   --radius-sm: 10px;
   --container: 1120px;
@@ -1664,3 +1664,119 @@ a.chat-cite:hover { background: var(--accent); color: var(--on-accent); }
 }
 .checklist-status { color: var(--muted); font-weight: 500; }
 .checklist-status.is-done { color: var(--accent); }
+
+
+/* ==========================================================================
+   Layout refresh (2026-11): serif headings, fewer boxes and labels,
+   quieter motion, text that fills its column. Colors are unchanged.
+   ========================================================================== */
+
+body { font-size: 17.5px; line-height: 1.6; }
+
+h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.01em; }
+.brand, .footer-grid .foot-brand { font-weight: 600; letter-spacing: -0.01em; }
+
+/* Dates and small data stay in the sans face. */
+.news-item .date,
+.fancy-list li .when,
+.stat-card .lbl { font-family: var(--font-body); }
+
+/* No scroll fade-ins: content is visible straight away. */
+.reveal { opacity: 1; transform: none; transition: none; }
+
+/* Cards stay put on hover; the border change is enough feedback. */
+.card:hover, .person:hover, .featured-card:hover, .video-card:hover,
+.news-item:hover, .icon-btn:hover, .btn-primary:hover, .btn-ghost:hover { transform: none; }
+
+/* ---------- home hero ---------- */
+
+.hero h1 { font-size: clamp(2.8rem, 6.4vw, 4.4rem); line-height: 1.05; margin-bottom: 16px; }
+.hero .tagline { font-size: 1.25rem; line-height: 1.45; }
+.hero .tagline .tagline-org { color: var(--text-soft); font-weight: 400; }
+.hero .summary { max-width: 62ch; }
+
+/* Stats as one quiet line instead of four boxes. */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 56px;
+  margin-top: 52px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+.stat-card { background: none; border: 0; box-shadow: none; padding: 0; text-align: left; }
+.stat-card .num { font-size: 2.1rem; font-weight: 600; line-height: 1.1; }
+.stat-card .lbl { font-size: 0.92rem; margin-top: 2px; }
+
+@media (max-width: 900px) {
+  .hero { padding: 36px 0 36px; }
+  .hero-grid { gap: 28px; }
+  .hero-photo { justify-self: start; }
+  .hero-photo img { width: 148px; border-width: 4px; }
+  .hero-photo .ring { inset: -8px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 36px; }
+}
+
+@media (max-width: 480px) {
+  .social-row { gap: 6px; }
+  .social-row .icon-btn { width: 36px; height: 36px; }
+  .social-row .icon-btn svg { width: 17px; height: 17px; }
+}
+
+/* ---------- section heads and widths ---------- */
+
+.section-head { margin-bottom: 30px; }
+.section-head h2 { font-size: clamp(1.75rem, 3.4vw, 2.35rem); }
+.section-head p.sub { max-width: none; }
+.page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.1rem); }
+.page-hero p { max-width: 82ch; }
+
+/* ---------- news: a dated list, not cards ---------- */
+
+.news-list { gap: 0; max-width: none; border-top: 1px solid var(--border); }
+.news-item {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 18px 0;
+  grid-template-columns: 150px 1fr;
+  gap: 24px;
+}
+@media (max-width: 640px) {
+  .news-item { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
+}
+
+/* ---------- teaching: courses as a ruled list ---------- */
+
+.course-list { gap: 0 40px; }
+.course-list .card {
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 20px 0 22px;
+}
+.course-list .card:hover { box-shadow: none; }
+.course-list .badge { background: none; padding: 0; margin-bottom: 6px; letter-spacing: 0.04em; }
+
+/* ---------- CV: let timelines and lists use the column ---------- */
+
+.timeline, .fancy-list { max-width: none; }
+
+/* ---------- footer ---------- */
+
+.foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 8px; font-size: 0.88rem; }
+.foot-links a { color: var(--text-soft); }
+.foot-links a:hover { color: var(--accent); }
+
+/* ---------- research chat: a compact round button that covers less text ---------- */
+
+.chat-launcher { padding: 15px; }
+.chat-launcher span {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.chat-launcher svg { width: 24px; height: 24px; }
