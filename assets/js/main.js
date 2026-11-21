@@ -74,9 +74,10 @@
         var trail = url.slice(trimmed.length);
         return pre + '<a href="' + trimmed + '" target="_blank" rel="noopener">' + trimmed + "</a>" + trail;
       });
-      // linkify doi:10.xxxx/yyyy
-      seg = seg.replace(/doi:\s*(10\.[^\s<]+?)([.,;]?)(?=(\s|<|$))/g, function (m, doi, punct) {
-        return '<a href="https://doi.org/' + doi + '" target="_blank" rel="noopener">doi:' + doi + "</a>" + punct;
+      // linkify legacy doi:10.xxxx/yyyy, shown in the https://doi.org/ form
+      seg = seg.replace(/doi:\s*(10\.[^\s<(]+?)([.,;]?)(?=(\s|<|\(|$))/g, function (m, doi, punct) {
+        var url = "https://doi.org/" + doi;
+        return '<a href="' + url + '" target="_blank" rel="noopener">' + url + "</a>" + punct;
       });
       // bold his name
       seg = seg.replace(/Bulut, O\./g, "<strong>Bulut, O.</strong>");
