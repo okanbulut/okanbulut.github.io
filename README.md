@@ -38,6 +38,11 @@ best). The home page picks it up automatically — until then a placeholder show
 Save it as **`assets/cv/Okan_Bulut_CV.pdf`**. The "Download Full CV" button on
 the CV page points there.
 
+### 🔗 Add a new page
+Copy an existing page's `<head>` block (canonical link and `og:` tags point to
+`https://www.okanbulut.com/<page>/`), then add the page to **`sitemap.xml`**.
+The link-preview image is **`assets/img/share-card.png`** (1200×630).
+
 ## Where everything lives
 
 | Content | File |
