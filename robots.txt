@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /rag/
+
+Sitemap: https://www.okanbulut.com/sitemap.xml
