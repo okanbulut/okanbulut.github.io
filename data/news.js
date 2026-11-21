@@ -10,7 +10,14 @@
            <strong>...</strong>, <em>...</em>, and
            <a href="...">links</a>.
    Keep the trailing comma after each closing brace.
+
+   HOME VS. ARCHIVE:
+   The home page shows items dated NEWS_HOME_FROM_YEAR or later.
+   Older items appear on the News archive page (news/). Change
+   the year below when you want to move a year to the archive.
    ============================================================ */
+
+const NEWS_HOME_FROM_YEAR = 2026;
 
 const NEWS = [
   {

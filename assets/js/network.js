@@ -1,9 +1,10 @@
 /* ==========================================================================
    Okan Bulut — Academic Portfolio
-   Co-author network (Lab page, #coauthor-network).
+   Co-author network (Research page, #coauthor-network).
    Built in the browser from data/publications.js and data/presentations.js,
    so it updates itself whenever a citation is added. Current students and
-   former advisees are read from the #lab and #alumni sections of the page.
+   former advisees are read from the #lab and #alumni sections of the
+   My Lab page (../lab/), fetched when the network loads.
    Requires d3 v7.
 
    If one person appears under two spellings that don't merge on their own
@@ -13,6 +14,22 @@
 
 (function () {
   "use strict";
+
+  // Student and advisee names live on the My Lab page; read them from there so
+  // the list is kept in one place. If that page can't be fetched, everyone is
+  // drawn as a collaborator.
+  var LAB_URL = "../lab/";
+  function start(labDoc) { build(labDoc || document.implementation.createHTMLDocument("")); }
+  if (window.fetch) {
+    fetch(LAB_URL)
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (html) { start(new DOMParser().parseFromString(html, "text/html")); })
+      .catch(function () { start(null); });
+  } else {
+    start(null);
+  }
+
+  function build(labDoc) {
 
   var root = document.getElementById("coauthor-network");
   if (!root || typeof d3 === "undefined" || typeof PUBLICATIONS === "undefined") return;
@@ -115,7 +132,7 @@
 
   // Students and alumni, matched by first initial + last name.
   function matchNames(selector, group) {
-    document.querySelectorAll(selector).forEach(function (el) {
+    labDoc.querySelectorAll(selector).forEach(function (el) {
       var tokens = fold(el.textContent).replace(/-/g, " ").split(/\s+/).filter(Boolean);
       if (tokens.length < 2) return;
       var initial = tokens[0].charAt(0);
@@ -600,4 +617,5 @@
   // A page opened in a hidden window has no size yet; draw once it's shown.
   document.addEventListener("visibilitychange", resize);
   resize();
+  }
 })();

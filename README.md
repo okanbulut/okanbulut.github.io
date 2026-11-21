@@ -30,6 +30,10 @@ Edit **`data/news.js`** and paste a new block at the **top** of the list:
 },
 ```
 
+The home page shows items dated `NEWS_HOME_FROM_YEAR` (set at the top of
+`data/news.js`) or later; older items move to the **News archive** page
+(`news/`) automatically.
+
 ### 🖼️ Add your photo
 Save your headshot as **`assets/img/profile.jpg`** (square, ~600×600 px works
 best). The home page picks it up automatically — until then a placeholder shows.
