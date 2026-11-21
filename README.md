@@ -13,7 +13,7 @@ style. For journal articles, put it inside the matching year block (newest year
 at the top — copy an existing year block to start a new year).
 
 - Use `<em>...</em>` for italics (journal name + volume).
-- DOIs (`doi:10.xxxx/...`) and URLs become clickable links automatically.
+- Write DOIs as `https://doi.org/10.xxxx/...`; DOIs and URLs become clickable links automatically.
 - "Bulut, O." is bolded automatically.
 
 ### ➕ Add a presentation
