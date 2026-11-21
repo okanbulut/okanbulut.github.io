@@ -187,18 +187,31 @@
     return sec;
   }
 
+  // Each year is a collapsible <details>; the newest OPEN_YEARS start open.
+  var OPEN_YEARS = 2;
   function yearBlocks(container, groups) {
-    groups.forEach(function (g) {
-      var block = document.createElement("div");
+    groups.forEach(function (g, i) {
+      var block = document.createElement("details");
       block.className = "year-block";
       block.id = "y-" + g.year.replace(/\W+/g, "-").toLowerCase();
+      if (i < OPEN_YEARS) { block.open = true; block.setAttribute("data-default-open", ""); }
+      var summary = document.createElement("summary");
       var h = document.createElement("h3");
-      h.textContent = g.year;
-      block.appendChild(h);
+      h.innerHTML = g.year + ' <span class="year-count">' + g.items.length + "</span>";
+      summary.appendChild(h);
+      block.appendChild(summary);
       block.appendChild(citeList(g.items));
       container.appendChild(block);
     });
   }
+
+  // A link to #y-2024 (or a section that holds it) opens that year.
+  function openFromHash() {
+    var id = decodeURIComponent(window.location.hash.slice(1));
+    var target = id && document.getElementById(id);
+    if (target && target.tagName === "DETAILS") target.open = true;
+  }
+  window.addEventListener("hashchange", openFromHash);
 
   /* ---------- publications page ---------- */
 
@@ -231,6 +244,7 @@
     secUR.appendChild(citeList(P.underReview));
     pubsRoot.appendChild(secUR);
 
+    openFromHash();
     fillCounts({ books: P.books.length, chapters: P.chapters.length, articles: nArticles,
                  proceedings: P.proceedings.length, "under-review": P.underReview.length });
     wireSearch(pubsRoot);
@@ -251,6 +265,7 @@
     yearBlocks(secConf, R.conference);
     presRoot.appendChild(secConf);
 
+    openFromHash();
     fillCounts({ invited: R.invited.length, conference: nConf });
     wireSearch(presRoot);
   }
@@ -281,6 +296,8 @@
       root.querySelectorAll(".year-block").forEach(function (b) {
         var any = b.querySelectorAll(".cite-list li:not(.hidden)").length > 0;
         b.style.display = any ? "" : "none";
+        // While filtering, open every year with a match; afterwards restore the default.
+        b.open = q ? any : b.hasAttribute("data-default-open");
       });
       root.querySelectorAll(".cite-section").forEach(function (s) {
         var any = s.querySelectorAll(".cite-list li:not(.hidden)").length > 0;
