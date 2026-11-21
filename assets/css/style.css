@@ -187,8 +187,8 @@ textarea:focus-visible,
 
 .nav-burger { display: none; }
 
-/* The full menu needs ~990px; below that it collapses into the burger. */
-@media (max-width: 1020px) {
+/* The full menu needs ~1040px; below that it collapses into the burger. */
+@media (max-width: 1080px) {
   .nav-burger { display: inline-flex; }
   .site-nav {
     position: absolute;
