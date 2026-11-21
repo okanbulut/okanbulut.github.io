@@ -318,14 +318,52 @@
 
   /* ---------- news (home) ---------- */
 
+  function newsYear(item) {
+    var m = /(\d{4})/.exec(item.date || "");
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  function newsItem(item) {
+    var div = document.createElement("article");
+    div.className = "news-item";
+    div.innerHTML = '<div class="date">' + item.date + '</div><div class="body">' + item.html + "</div>";
+    return div;
+  }
+  var NEWS_CUTOFF = typeof NEWS_HOME_FROM_YEAR !== "undefined" ? NEWS_HOME_FROM_YEAR : 0;
+
+  // Home: items from NEWS_HOME_FROM_YEAR on, plus a link to the archive.
   var newsRoot = document.getElementById("news-root");
   if (newsRoot && typeof NEWS !== "undefined") {
     NEWS.forEach(function (item) {
-      var div = document.createElement("article");
-      div.className = "news-item reveal in";
-      div.innerHTML = '<div class="date">' + item.date + '</div><div class="body">' + item.html + "</div>";
-      newsRoot.appendChild(div);
+      if (newsYear(item) >= NEWS_CUTOFF) newsRoot.appendChild(newsItem(item));
     });
+    var more = document.getElementById("news-archive-link");
+    if (more && NEWS.some(function (item) { return newsYear(item) < NEWS_CUTOFF; })) more.hidden = false;
+  }
+
+  // Archive page: older items, grouped by year (newest first).
+  var archiveRoot = document.getElementById("news-archive-root");
+  if (archiveRoot && typeof NEWS !== "undefined") {
+    var byYear = {};
+    var order = [];
+    NEWS.forEach(function (item) {
+      var y = newsYear(item);
+      if (y >= NEWS_CUTOFF) return;
+      if (!byYear[y]) { byYear[y] = []; order.push(y); }
+      byYear[y].push(item);
+    });
+    order.sort(function (a, b) { return b - a; });
+    order.forEach(function (y) {
+      var h = document.createElement("h2");
+      h.className = "news-year";
+      h.id = "y-" + y;
+      h.textContent = y || "Undated";
+      archiveRoot.appendChild(h);
+      var list = document.createElement("div");
+      list.className = "news-list";
+      byYear[y].forEach(function (item) { list.appendChild(newsItem(item)); });
+      archiveRoot.appendChild(list);
+    });
+    if (!order.length) archiveRoot.innerHTML = "<p>No archived news yet.</p>";
   }
 
   /* ---------- home stats ---------- */

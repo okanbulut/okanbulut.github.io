@@ -46,7 +46,7 @@
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       <a href="../">Home</a>
       <a href="./" class="active">Research</a>
-      <a href="../lab/">Lab</a>
+      <a href="../lab/">My Lab</a>
       <a href="../publications/">Publications</a>
       <a href="../presentations/">Presentations</a>
       <a href="../software/">Software</a>
@@ -294,6 +294,20 @@
     </div>
   </section>
 
+  <!-- ============ COLLABORATION NETWORK ============ -->
+  <!-- Built automatically from data/publications.js and data/presentations.js (assets/js/network.js). -->
+  <section class="section soft" id="network">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Who I work with</h2>
+        <p class="sub">Every co-author on my publications and presentations. Larger circles mean more joint work; lines connect people who have also worked with each other. Click a name to see our joint work.</p>
+      </div>
+      <div id="coauthor-network" class="nw">
+        <noscript><p>The interactive network needs JavaScript.</p></noscript>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
@@ -309,7 +323,7 @@
       </div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="./">Research</a>
-        <a href="../lab/">Lab</a>
+        <a href="../lab/">My Lab</a>
         <a href="../publications/">Publications</a>
         <a href="../presentations/">Presentations</a>
         <a href="../software/">Software</a>
@@ -327,5 +341,9 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../data/publications.js"></script>
+<script src="../data/presentations.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="../assets/js/network.js"></script>
 </body>
 </html>
