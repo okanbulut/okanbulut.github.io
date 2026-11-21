@@ -1,6 +1,6 @@
 /* ==========================================================================
    Okan Bulut — Academic Portfolio
-   Co-author network (Research page, #coauthor-network).
+   Co-author network (Lab page, #coauthor-network).
    Built in the browser from data/publications.js and data/presentations.js,
    so it updates itself whenever a citation is added. Current students and
    former advisees are read from the #lab and #alumni sections of the page.
