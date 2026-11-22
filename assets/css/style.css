@@ -2027,3 +2027,7 @@ a.paper-card:hover, a.paper-card:focus-visible {
   .paper-card[aria-hidden="true"] { display: none; }
   .paper-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
 }
+
+/* Keep the rolling papers and the lab members close together. */
+#lab-papers { padding-bottom: 8px; }
+#lab-papers + #lab { padding-top: 32px; }
