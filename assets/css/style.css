@@ -1881,3 +1881,30 @@ details.year-block > summary:hover h3 { color: var(--accent); }
    background, so keep only a small gap between the student cards and the box. */
 #lab { padding-bottom: 32px; }
 #lab + #prospective { padding-top: 0; }
+
+/* ---------- home news: clamp long items with a Read more toggle ---------- */
+
+.news-clip.is-clamped {
+  max-height: calc(1.65em * var(--news-lines, 3));
+  overflow: hidden;
+}
+.news-clip.is-clamped.is-overflowing {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.65em), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 1.65em), transparent);
+}
+.news-toggle {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+}
+.news-toggle::after { content: " \2193"; }
+.news-toggle[aria-expanded="true"]::after { content: " \2191"; }
+.news-toggle:hover { color: var(--accent-strong); text-decoration: underline; }
+.news-toggle[hidden] { display: none; }
