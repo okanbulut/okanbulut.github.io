@@ -1,0 +1,46 @@
+# Weekly check of R package versions shown on the Software page.
+# Opens or updates one pull request when a version changes.
+name: Package versions
+
+on:
+  schedule:
+    - cron: "30 14 * * 1" # Mondays, after the publication sync
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/update-package-versions.mjs"
+      - ".github/workflows/package-versions.yml"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Dry run
+        if: github.event_name == 'pull_request'
+        run: node scripts/update-package-versions.mjs --dry-run
+
+      - name: Update versions
+        if: github.event_name != 'pull_request'
+        id: versions
+        run: node scripts/update-package-versions.mjs --summary "$RUNNER_TEMP/summary.md"
+
+      - name: Open or update the pull request
+        if: github.event_name != 'pull_request' && steps.versions.outputs.changes != '0'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/package-versions
+          add-paths: software/index.html
+          commit-message: Update R package versions on the Software page
+          title: "Software page: new R package versions"
+          body-path: ${{ runner.temp }}/summary.md
+          assignees: ${{ github.repository_owner }}
+          delete-branch: true

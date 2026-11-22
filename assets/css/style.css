@@ -460,6 +460,7 @@ textarea:focus-visible,
 
 .card h3 { font-size: 1.15rem; margin-bottom: 8px; }
 .card p { color: var(--text-soft); font-size: 0.95rem; }
+.card .pkg-version { color: var(--muted); font-size: 0.8rem; font-weight: 600; margin: -4px 0 8px; }
 
 .card .card-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
