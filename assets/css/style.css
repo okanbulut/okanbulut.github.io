@@ -1876,3 +1876,8 @@ details.year-block > summary:hover h3 { color: var(--accent); }
 .page-hero p + p { margin-top: 12px; }
 .news-item .body ul { margin: 8px 0 0 1.1em; }
 .news-item .body li { margin: 4px 0; }
+
+/* My Lab: Prospective students follows Current graduate students on the same
+   background, so keep only a small gap between the student cards and the box. */
+#lab { padding-bottom: 32px; }
+#lab + #prospective { padding-top: 0; }
