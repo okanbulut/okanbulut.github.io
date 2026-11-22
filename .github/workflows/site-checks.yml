@@ -1,0 +1,92 @@
+# Site health checks.
+# - On every pull request: the data files load, DOIs use https://doi.org/,
+#   and every DOI added by the pull request is registered (these block
+#   merging). Broken links are
+#   reported but don't block.
+# - Weekly: the same checks on the live content; problems go into one
+#   "Site check" issue that is updated each week and closed when all is well.
+name: Site checks
+
+on:
+  pull_request:
+  schedule:
+    - cron: "0 15 * * 1" # Mondays, after the publication sync
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Data files load and DOIs use https://doi.org/
+        id: data
+        run: node scripts/check-data.mjs 2>&1 | tee "$RUNNER_TEMP/data.txt"; exit ${PIPESTATUS[0]}
+        continue-on-error: ${{ github.event_name != 'pull_request' }}
+
+      - name: New DOIs are registered
+        id: dois
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            git fetch --no-tags --depth=1 origin "$BASE_REF"
+            node scripts/check-dois.mjs --report "$RUNNER_TEMP/dois.md" --base FETCH_HEAD
+          else
+            node scripts/check-dois.mjs --report "$RUNNER_TEMP/dois.md"
+          fi
+        continue-on-error: ${{ github.event_name != 'pull_request' }}
+
+      - name: Links work
+        id: links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --root-dir ${{ github.workspace }}
+            --accept 200..=299,403,429,999
+            --exclude "^https?://(dx\.)?doi\.org/"
+            --exclude "linkedin\.com"
+            --exclude "^mailto:"
+            --max-concurrency 8
+            --timeout 30
+            --max-retries 2
+            --no-progress
+            "./*.html" "./*/index.html" "./data/*.js"
+          format: markdown
+          output: ${{ runner.temp }}/links.md
+          fail: false
+
+      - name: Update the weekly Site check issue
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DATA_OK: ${{ steps.data.outcome == 'success' }}
+          DOIS_OK: ${{ steps.dois.outcome == 'success' }}
+          LINKS_OK: ${{ steps.links.outputs.exit_code == 0 }}
+        run: |
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search 'in:title "Site check"' --json number --jq '.[0].number')
+          if [ "$DATA_OK" = true ] && [ "$DOIS_OK" = true ] && [ "$LINKS_OK" = true ]; then
+            if [ -n "$existing" ]; then
+              gh issue close "$existing" --repo "$GITHUB_REPOSITORY" --comment "All checks pass again on $(date -u +%F)."
+            fi
+            exit 0
+          fi
+          {
+            echo "Weekly check from $(date -u +%F). This issue is updated each week and closes itself when everything passes."
+            echo
+            if [ "$DATA_OK" != true ]; then echo "## Data files"; echo; echo '```'; cat "$RUNNER_TEMP/data.txt"; echo '```'; echo; fi
+            if [ "$DOIS_OK" != true ]; then echo "## DOIs"; echo; cat "$RUNNER_TEMP/dois.md"; echo; fi
+            if [ "$LINKS_OK" != true ]; then echo "## Links"; echo; cat "$RUNNER_TEMP/links.md"; fi
+          } > "$RUNNER_TEMP/issue.md"
+          if [ -n "$existing" ]; then
+            gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/issue.md"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "Site check: problems found" --body-file "$RUNNER_TEMP/issue.md" --assignee "$GITHUB_REPOSITORY_OWNER"
+          fi

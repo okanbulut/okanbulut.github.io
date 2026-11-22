@@ -1,0 +1,74 @@
+# Turns an "Add news" issue into a pull request that edits data/news.js.
+# Only runs for issues opened by the repository owner or collaborators.
+name: Add news from issue
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: add-news-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  add-news:
+    if: >-
+      (contains(github.event.issue.labels.*.name, 'news') || contains(github.event.issue.body, '### Where should it appear?')) &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association) &&
+      github.event.issue.state == 'open'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Add the news item to data/news.js
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          SUMMARY_FILE: ${{ runner.temp }}/news.md
+        run: node scripts/add-news.mjs
+
+      - name: Check the data files
+        run: node scripts/check-data.mjs
+
+      - name: Write pull request description
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          {
+            echo "Adds a news item from #${NUMBER}."
+            echo
+            cat "$RUNNER_TEMP/news.md"
+            echo
+            echo "To change it, edit the issue (this pull request updates itself) or edit \`data/news.js\` here. Merging publishes it and closes the issue."
+            echo
+            echo "Closes #${NUMBER}"
+          } > "$RUNNER_TEMP/body.md"
+
+      - name: Open or update the pull request
+        id: pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/news-${{ github.event.issue.number }}
+          add-paths: data/news.js
+          commit-message: "Add news item from #${{ github.event.issue.number }}"
+          title: "Add news: ${{ github.event.issue.title }}"
+          body-path: ${{ runner.temp }}/body.md
+          labels: news
+          assignees: ${{ github.repository_owner }}
+          delete-branch: true
+
+      - name: Link the pull request on the issue
+        if: steps.pr.outputs.pull-request-operation == 'created'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.issue.number }}
+          URL: ${{ steps.pr.outputs.pull-request-url }}
+        run: |
+          gh issue comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body "Pull request ready for review: $URL"
