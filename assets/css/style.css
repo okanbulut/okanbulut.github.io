@@ -1873,3 +1873,5 @@ details.year-block > summary:hover h3 { color: var(--accent); }
   fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
 }
 .page-hero p + p { margin-top: 12px; }
+.news-item .body ul { margin: 8px 0 0 1.1em; }
+.news-item .body li { margin: 4px 0; }

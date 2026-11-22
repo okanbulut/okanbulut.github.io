@@ -25,7 +25,7 @@ const NEWS = [
   {
   date: "November 2026",
   lab: true,
-  html: "Seven of our papers were accepted for the <strong>NCME 2027 Annual Meeting</strong> in Toronto in April 2027. Lab members will present work on slow responses in computerized assessments (Daniel Jerez), behavioral engagement in digital assessment (Joyce Liu), and predicting item nonresponse with explainable machine learning (Mehrdad Yousefpoori-Naeim and Bin Tan), plus four more studies led by Joyce Liu, Kevin Vo, Doris Abroampah, and Eunji Kim.",
+  html: "Seven of our papers were accepted for the <strong>NCME 2027 Annual Meeting</strong> in Toronto in April 2027:<ul><li><em>Comparing slow and non-slow responses in computerized assessments with transition network analysis</em> (Daniel Jerez)</li><li><em>From learn to apply: Profiling behavioral engagement in digital assessment with process data</em> (Joyce Liu)</li><li><em>Predicting item nonresponse from item features using explainable machine learning</em> (Mehrdad Yousefpoori-Naeim, Bin Tan)</li><li><em>When order matters: Positional bias in open-weight LLMs on multiple choice items</em> (Joyce Liu, Eunji Kim)</li><li><em>Structural validation with hierarchical network psychometrics: Social-emotional skills across cultural contexts</em> (Kevin Vo)</li><li><em>Do item positions impact response processes? Evidence from TIMSS 2023 interactive items</em> (Doris Abroampah, Joyce Liu)</li><li><em>Understanding early test termination through first-task time-use patterns</em> (Eunji Kim)</li></ul>",
   },
   {
   date: "November 2026",
