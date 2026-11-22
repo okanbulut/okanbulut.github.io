@@ -326,13 +326,11 @@
 
     var all = pubs.concat(talks).filter(function (w) { return /^\d/.test(w.year); });
     var newest = Math.max.apply(null, all.map(function (w) { return +w.year; }));
-    var oldest = Math.min.apply(null, all.map(function (w) { return +w.year; }));
     var fromYear = newest - LAB_WORK_YEARS + 1;
     var summary = document.getElementById("lab-work-summary");
     if (summary) {
-      summary.innerHTML = "Since " + oldest + ", lab members have co-authored " + pubs.length +
-        " publications and " + talks.length + " presentations with me. Below is the work from " +
-        fromYear + " on, with lab members’ names highlighted.";
+      summary.innerHTML = "Below is the work from " + fromYear +
+        " on, with lab members’ names highlighted.";
     }
 
     // Group newest first; "In press" comes before the years.
