@@ -324,6 +324,8 @@
     var talks = typeof PRESENTATIONS !== "undefined"
       ? collect([PRESENTATIONS.invited].concat(flat(PRESENTATIONS.conference))) : [];
 
+    buildPaperShowcase(collect(flat(P.articles)));
+
     var all = pubs.concat(talks).filter(function (w) { return /^\d/.test(w.year); });
     var newest = Math.max.apply(null, all.map(function (w) { return +w.year; }));
     var fromYear = newest - LAB_WORK_YEARS + 1;
@@ -357,6 +359,71 @@
       });
       labWorkRoot.appendChild(sec);
     });
+  }
+
+  /* ---------- My Lab: rolling showcase of articles with lab members ---------- */
+
+  // Turns each journal article co-authored with a lab member into a small
+  // "front page" card (journal, year, title, authors, a line drawing for its
+  // theme) and lets the row drift sideways. Everything comes from
+  // data/publications.js, so new papers appear on their own.
+  function buildPaperShowcase(works) {
+    var SHOWCASE_MAX = 14;    // most recent articles to show
+    var root = document.getElementById("lab-papers-root");
+    if (!root) return;
+    var strip = function (t) { return t.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").trim(); };
+    var THEMES = [
+      { key: "llm", re: /\b(LLMs?|large language|generative AI|ChatGPT|GPT|chatbot|conversation)/i, label: "AI & language models" },
+      { key: "network", re: /network/i, label: "Network psychometrics" },
+      { key: "process", re: /(response time|process data|slow|log data|sequential|disengage|engagement|time-constrained)/i, label: "Process data" },
+      { key: "ml", re: /(machine learning|feature selection|data mining|explainable|augmentation|natural language)/i, label: "Machine learning" },
+      { key: "irt", re: /(item response|adaptive|IRT|invariance|scal|test|item)/i, label: "Measurement" },
+    ];
+    var ART = {
+      irt: '<path d="M8 72 C 40 72, 48 18, 92 14"/><path d="M8 74 C 30 74, 62 30, 92 26" opacity=".55"/><path d="M8 76 C 55 76, 60 46, 92 40" opacity=".3"/>',
+      network: '<path d="M20 60 L44 30 L70 50 L86 22 M44 30 L60 14 M70 50 L50 70 L20 60"/><circle cx="20" cy="60" r="4"/><circle cx="44" cy="30" r="5"/><circle cx="70" cy="50" r="5"/><circle cx="86" cy="22" r="3.5"/><circle cx="60" cy="14" r="3"/><circle cx="50" cy="70" r="3.5"/>',
+      process: '<path d="M8 64 H92" opacity=".35"/><rect x="10" y="44" width="14" height="20" rx="2"/><rect x="30" y="30" width="10" height="34" rx="2"/><rect x="46" y="52" width="18" height="12" rx="2"/><rect x="70" y="20" width="12" height="44" rx="2"/><circle cx="78" cy="12" r="0" />',
+      ml: '<path d="M50 12 L28 38 M50 12 L72 38 M28 38 L16 64 M28 38 L40 64 M72 38 L62 64 M72 38 L86 64"/><circle cx="50" cy="12" r="4"/><circle cx="28" cy="38" r="4"/><circle cx="72" cy="38" r="4"/><circle cx="16" cy="64" r="3"/><circle cx="40" cy="64" r="3"/><circle cx="62" cy="64" r="3"/><circle cx="86" cy="64" r="3"/>',
+      llm: '<rect x="10" y="14" width="52" height="26" rx="8"/><path d="M22 40 L18 50 L32 40"/><rect x="38" y="46" width="52" height="22" rx="8" opacity=".6"/><path d="M20 27 H50 M48 57 H80" opacity=".6"/>',
+    };
+    var cards = [];
+    works.forEach(function (w) {
+      if (cards.length >= SHOWCASE_MAX) return;
+      var m = w.html.match(/\)\.?\s*([\s\S]*?)\s*<em>([\s\S]*?)<\/em>/);
+      if (!m) return;
+      var journal = strip(m[2]).split(",")[0].trim();
+      var title = strip(m[1]).replace(/\.$/, "");
+      var authors = w.html.slice(0, w.html.indexOf("(" + (w.year === "In press" ? "In press" : w.year)));
+      var doi = (w.html.match(/https:\/\/doi\.org\/[^\s<"]+/) || [""])[0].replace(/[.,]$/, "");
+      if (!title || !journal) return;
+      var theme = THEMES.filter(function (t) { return t.re.test(title); })[0] || THEMES[THEMES.length - 1];
+      cards.push({ journal: journal, title: title, authors: authors.trim().replace(/,\s*$/, ""), year: w.year, doi: doi, theme: theme });
+    });
+    if (cards.length < 4) return;
+
+    var track = document.createElement("div");
+    track.className = "paper-track";
+    var render = function (c, clone) {
+      var a = document.createElement(c.doi ? "a" : "div");
+      a.className = "paper-card theme-" + c.theme.key;
+      if (c.doi) { a.href = c.doi; a.target = "_blank"; a.rel = "noopener"; }
+      if (clone) { a.setAttribute("aria-hidden", "true"); a.tabIndex = -1; }
+      a.innerHTML =
+        '<div class="paper-band"><span class="paper-journal">' + c.journal + '</span><span class="paper-year">' + c.year + "</span></div>" +
+        '<div class="paper-body">' +
+          '<svg class="paper-art" viewBox="0 0 100 80" aria-hidden="true">' + ART[c.theme.key] + "</svg>" +
+          '<h3 class="paper-title">' + c.title + "</h3>" +
+          '<p class="paper-authors">' + c.authors + "</p>" +
+          '<span class="paper-theme">' + c.theme.label + "</span>" +
+        "</div>";
+      return a;
+    };
+    cards.forEach(function (c) { track.appendChild(render(c, false)); });
+    // Second copy makes the loop seamless; screen readers skip it.
+    cards.forEach(function (c) { track.appendChild(render(c, true)); });
+    track.style.setProperty("--paper-speed", (cards.length * 6) + "s");
+    root.appendChild(track);
+    root.closest("section").hidden = false;
   }
 
   function fillCounts(map) {

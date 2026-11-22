@@ -1908,3 +1908,122 @@ details.year-block > summary:hover h3 { color: var(--accent); }
 .news-toggle[aria-expanded="true"]::after { content: " \2191"; }
 .news-toggle:hover { color: var(--accent-strong); text-decoration: underline; }
 .news-toggle[hidden] { display: none; }
+
+/* ---------- My Lab: rolling showcase of papers with lab members ---------- */
+
+.paper-showcase-section { overflow: hidden; }
+.paper-showcase-section .section-head { margin-bottom: 24px; }
+.paper-marquee {
+  overflow: hidden;
+  padding: 8px 0 14px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.paper-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  padding-left: 20px;
+  animation: paper-drift var(--paper-speed, 80s) linear infinite;
+}
+.paper-marquee:hover .paper-track,
+.paper-marquee:focus-within .paper-track { animation-play-state: paused; }
+@keyframes paper-drift {
+  to { transform: translateX(calc(-50% - 10px)); }
+}
+.paper-card {
+  flex: 0 0 auto;
+  width: 220px;
+  height: 310px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+a.paper-card:hover, a.paper-card:focus-visible {
+  color: var(--text);
+  transform: translateY(-4px) rotate(-0.6deg);
+  box-shadow: var(--shadow-md);
+}
+.paper-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--gradient);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+:root[data-theme="dark"] .paper-band { color: #0b0e1c; }
+.paper-journal { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.paper-year { flex: none; opacity: 0.9; }
+.paper-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 14px 14px;
+  min-height: 0;
+}
+.paper-art {
+  width: 100%;
+  height: 64px;
+  margin-bottom: 10px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  background: var(--accent-soft);
+  border-radius: 4px;
+}
+.paper-art circle { fill: var(--accent-2); stroke: none; }
+.paper-title {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  line-height: 1.3;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.paper-authors {
+  margin-top: 8px;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--text-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.paper-theme {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+@media (max-width: 600px) {
+  .paper-card { width: 180px; height: 280px; }
+  .paper-title { font-size: 0.9rem; -webkit-line-clamp: 4; }
+  .paper-art { height: 52px; }
+}
+/* No motion requested: show the papers as a still row the visitor can swipe. */
+@media (prefers-reduced-motion: reduce) {
+  .paper-track { animation: none; }
+  .paper-card[aria-hidden="true"] { display: none; }
+  .paper-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+}
