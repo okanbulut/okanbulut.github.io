@@ -421,6 +421,15 @@
   }
   var NEWS_CUTOFF = typeof NEWS_HOME_FROM_YEAR !== "undefined" ? NEWS_HOME_FROM_YEAR : 0;
 
+  // My Lab: items marked lab: true, newest first.
+  var LAB_NEWS_MAX = 6;
+  var labNewsRoot = document.getElementById("lab-news-root");
+  if (labNewsRoot && typeof NEWS !== "undefined") {
+    var labNews = NEWS.filter(function (item) { return item.lab; }).slice(0, LAB_NEWS_MAX);
+    labNews.forEach(function (item) { labNewsRoot.appendChild(newsItem(item)); });
+    if (!labNews.length) labNewsRoot.closest("section").hidden = true;
+  }
+
   // Home: items from NEWS_HOME_FROM_YEAR on, plus a link to the archive.
   var newsRoot = document.getElementById("news-root");
   if (newsRoot && typeof NEWS !== "undefined") {

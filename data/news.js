@@ -9,6 +9,8 @@
      html: the news text. You can use simple HTML tags such as
            <strong>...</strong>, <em>...</em>, and
            <a href="...">links</a>.
+     lab:  optional. Add  lab: true,  to also show the item in
+           the Lab news section of the My Lab page.
    Keep the trailing comma after each closing brace.
 
    HOME VS. ARCHIVE:
@@ -20,6 +22,16 @@
 const NEWS_HOME_FROM_YEAR = 2026;
 
 const NEWS = [
+  {
+  date: "November 2026",
+  lab: true,
+  html: "Seven of our papers were accepted for the <strong>NCME 2027 Annual Meeting</strong> in Toronto in April 2027. Lab members will present work on slow responses in computerized assessments (Daniel Jerez), behavioral engagement in digital assessment (Joyce Liu), and predicting item nonresponse with explainable machine learning (Mehrdad Yousefpoori-Naeim and Bin Tan), plus four more studies led by Joyce Liu, Kevin Vo, Doris Abroampah, and Eunji Kim.",
+  },
+  {
+  date: "November 2026",
+  lab: true,
+  html: "Bin Tan and I received a <strong>TLEF Innovation Grant</strong> from the University of Alberta for our one-year project, <em>Toward AI-Resilient Multiple-Choice Assessment: Using Conversation to Diagnose Misconceptions and Support Formative Learning</em>.",
+  },
   {
   date: "November 2026",
   html: "I released <a href='https://www.okanbulut.com/mirtverse/'>mirtverse</a> as a friendly workflow and reporting layer for the mirt package in R. Along with the package, I posted interactive labs for students, several materials for instructors who may use mirtverse to teach item response theory, and an online book, titled <a href='https://www.okanbulut.com/mirtverse/book/index.html'>Item Response Theory with mirt and mirtverse</a>.",
