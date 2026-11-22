@@ -1,6 +1,7 @@
 # Site health checks.
 # - On every pull request: the data files load, DOIs use https://doi.org/,
-#   and every DOI is registered (these block merging). Broken links are
+#   and every DOI added by the pull request is registered (these block
+#   merging). Broken links are
 #   reported but don't block.
 # - Weekly: the same checks on the live content; problems go into one
 #   "Site check" issue that is updated each week and closed when all is well.
@@ -30,9 +31,17 @@ jobs:
         run: node scripts/check-data.mjs 2>&1 | tee "$RUNNER_TEMP/data.txt"; exit ${PIPESTATUS[0]}
         continue-on-error: ${{ github.event_name != 'pull_request' }}
 
-      - name: Every DOI is registered
+      - name: New DOIs are registered
         id: dois
-        run: node scripts/check-dois.mjs --report "$RUNNER_TEMP/dois.md"
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            git fetch --no-tags --depth=1 origin "$BASE_REF"
+            node scripts/check-dois.mjs --report "$RUNNER_TEMP/dois.md" --base FETCH_HEAD
+          else
+            node scripts/check-dois.mjs --report "$RUNNER_TEMP/dois.md"
+          fi
         continue-on-error: ${{ github.event_name != 'pull_request' }}
 
       - name: Links work

@@ -1,12 +1,28 @@
 // Checks that every DOI in the data files is registered, using the doi.org
 // handle API (it answers for the DOI itself, so publisher sites that block
 // automated visitors don't cause false alarms).
-// Usage: node scripts/check-dois.mjs [--report report.md]
+// Usage: node scripts/check-dois.mjs [--report report.md] [--base origin/master]
+// With --base, only DOIs that are new compared with that git ref make the
+// check fail (older problems are still listed, for the weekly issue).
 import fs from "node:fs";
+import { execFileSync } from "node:child_process";
 import { dataPath, extractDois, getJson } from "./lib/data.mjs";
 
 const reportIdx = process.argv.indexOf("--report");
 const reportFile = reportIdx > -1 ? process.argv[reportIdx + 1] : null;
+const baseIdx = process.argv.indexOf("--base");
+const baseRef = baseIdx > -1 ? process.argv[baseIdx + 1] : null;
+const baseDois = new Set();
+if (baseRef) {
+  for (const file of ["publications.js", "presentations.js", "news.js"]) {
+    try {
+      const old = execFileSync("git", ["show", `${baseRef}:data/${file}`], { encoding: "utf8" });
+      for (const d of extractDois(old)) baseDois.add(d);
+    } catch {
+      /* file not in base */
+    }
+  }
+}
 
 const found = new Map(); // doi -> file
 for (const file of ["publications.js", "presentations.js", "news.js"]) {
@@ -49,4 +65,6 @@ if (unchecked.length) lines.push("", "Could not check (doi.org did not answer):"
 const report = lines.join("\n");
 console.log(report);
 if (reportFile) fs.writeFileSync(reportFile, report + "\n");
-process.exit(bad.length ? 1 : 0);
+const blocking = baseRef ? bad.filter((d) => !baseDois.has(d)) : bad;
+if (baseRef && bad.length && !blocking.length) console.log("\n(These were already on the site before this change, so they don't fail this check.)");
+process.exit(blocking.length ? 1 : 0);

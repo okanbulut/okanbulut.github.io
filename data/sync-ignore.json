@@ -1,4 +1,8 @@
 {
   "_about": "DOIs that the weekly publication sync (scripts/sync-publications.mjs) should never add, e.g. items on ORCID that you leave off the website on purpose. One DOI per line, without https://doi.org/.",
-  "ignore": []
+  "ignore": [
+    "10.59863/sfeb5996",
+    "10.59863/qajt5138"
+  ],
+  "_notes": "10.59863/sfeb5996 and 10.59863/qajt5138 are the Chinese-language versions of CEJEME articles already listed in English."
 }

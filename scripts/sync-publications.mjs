@@ -107,15 +107,16 @@ function sentenceCase(title) {
   return words
     .map((w) => {
       // Lower-case plain Capitalized words (not acronyms like TIMSS or ChatGPT).
-      const out = startOfClause
-        ? w
-        : w
-            .split("-")
-            .map((part) => {
-              const bare = part.replace(/[^A-Za-z'’]/g, "");
-              return /^[A-Z][a-z'’]*$/.test(bare) && !KEEP_CAPS.has(bare) ? part.toLowerCase() : part;
-            })
-            .join("-");
+      // At the start of a clause only the first part keeps its capital
+      // ("Fine-Tuning" -> "Fine-tuning").
+      const out = w
+        .split("-")
+        .map((part, i) => {
+          if (startOfClause && i === 0) return part;
+          const bare = part.replace(/[^A-Za-z'’]/g, "");
+          return /^[A-Z][a-z'’]*$/.test(bare) && !KEEP_CAPS.has(bare) ? part.toLowerCase() : part;
+        })
+        .join("-");
       startOfClause = /[:?!]$/.test(w);
       return out;
     })
@@ -210,7 +211,7 @@ function formatAPA(meta, section) {
     return `${authors} (${year}). ${endPunct(title)} ${edPart}<em>${container}</em>${pp}. ${publisher ? publisher + ". " : ""}${doi}`;
   }
 
-  if (section === "proceedings") return `${authors} (${year}). ${endPunct(title)} In <em>${container}</em>${pp}. ${doi}`;
+  if (section === "proceedings") return `${authors} (${year}). ${endPunct(title)} In <em>${container}</em>${pp}. ${publisher ? publisher + ". " : ""}${doi}`;
 
   // Journal article or preprint.
   let src = `<em>${container}`;
