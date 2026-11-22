@@ -417,6 +417,46 @@
     div.innerHTML = '<div class="date">' + item.date + '</div><div class="body">' + item.html + "</div>";
     return div;
   }
+  // Home only: cut each item's text after `lines` lines, with a Read more / Show less
+  // toggle that appears only when the text actually overflows.
+  function clampNews(root, lines) {
+    var items = [];
+    Array.prototype.forEach.call(root.querySelectorAll(".news-item .body"), function (body, i) {
+      var clip = document.createElement("div");
+      clip.className = "news-clip is-clamped";
+      clip.id = "news-clip-" + i;
+      clip.style.setProperty("--news-lines", lines);
+      while (body.firstChild) clip.appendChild(body.firstChild);
+      body.appendChild(clip);
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "news-toggle";
+      btn.setAttribute("aria-controls", clip.id);
+      btn.setAttribute("aria-expanded", "false");
+      btn.textContent = "Read more";
+      btn.hidden = true;
+      btn.addEventListener("click", function () {
+        var open = clip.classList.toggle("is-clamped") === false;
+        btn.setAttribute("aria-expanded", String(open));
+        btn.textContent = open ? "Show less" : "Read more";
+      });
+      body.appendChild(btn);
+      items.push({ clip: clip, btn: btn });
+    });
+    function measure() {
+      items.forEach(function (it) {
+        if (!it.clip.classList.contains("is-clamped")) return;
+        var overflows = it.clip.scrollHeight > it.clip.clientHeight + 2;
+        it.btn.hidden = !overflows;
+        it.clip.classList.toggle("is-overflowing", overflows);
+      });
+    }
+    measure();
+    var t;
+    window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(measure, 150); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  }
+
   var NEWS_CUTOFF = typeof NEWS_HOME_FROM_YEAR !== "undefined" ? NEWS_HOME_FROM_YEAR : 0;
 
   // My Lab: items marked lab: true, newest first.
@@ -434,6 +474,7 @@
     NEWS.forEach(function (item) {
       if (newsYear(item) >= NEWS_CUTOFF && item.home !== false) newsRoot.appendChild(newsItem(item));
     });
+    clampNews(newsRoot, 3);
     var more = document.getElementById("news-archive-link");
     if (more && NEWS.some(function (item) { return newsYear(item) < NEWS_CUTOFF; })) more.hidden = false;
   }
