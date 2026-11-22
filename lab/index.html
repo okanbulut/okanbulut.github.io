@@ -13,10 +13,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bulut Research Group — Okan Bulut</title>
-  <meta name="description" content="The Bulut Research Group at the University of Alberta: current graduate students, former advisees, collaborators, and information for prospective students.">
+  <meta name="description" content="The Bulut Research Group at the University of Alberta: how the lab works, lab news, current graduate students, recent work with lab members, former advisees and where they are now, and information for prospective students.">
   <link rel="canonical" href="https://www.okanbulut.com/lab/">
   <meta property="og:title" content="Bulut Research Group — Okan Bulut">
-  <meta property="og:description" content="The Bulut Research Group at the University of Alberta: current graduate students, former advisees, collaborators, and information for prospective students.">
+  <meta property="og:description" content="The Bulut Research Group at the University of Alberta: how the lab works, lab news, current graduate students, recent work with lab members, former advisees and where they are now, and information for prospective students.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.okanbulut.com/lab/">
   <meta property="og:image" content="https://www.okanbulut.com/assets/img/share-card.png">
@@ -75,8 +75,17 @@
         Our group brings together graduate students in the Measurement, Evaluation, and Data
         Science (MEDS) program at the University of Alberta. We work on computational
         psychometrics, educational measurement, and assessment, extended with learning
-        analytics, AI, and large language models. Senior students work closely with new
-        students on a wide range of projects.
+        analytics, AI, and large language models.
+      </p>
+      <p>
+        Students work on research projects under my supervision through an apprenticeship
+        model. Junior and senior students team up on each project, so new members build their
+        skills and get early exposure to high-quality research. Over time, they take on more
+        responsibility for leading projects and mentoring junior members of the lab.
+      </p>
+      <p class="lab-location">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <span><strong>Lab location:</strong> Education Centre North 6-110, University of Alberta, Edmonton</span>
       </p>
     </div>
   </section>
@@ -101,6 +110,27 @@
     </div>
   </section>
 
+  <!-- ============ LAB NEWS (items marked lab: true in data/news.js) ============ -->
+  <section class="section soft" id="lab-news">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Lab news</h2>
+      </div>
+      <div class="news-list" id="lab-news-root"></div>
+    </div>
+  </section>
+
+  <!-- ============ LAB MEMBERS' WORK (filled from data/publications.js and data/presentations.js) ============ -->
+  <section class="section" id="lab-work">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Recent work with lab members</h2>
+        <p class="sub" id="lab-work-summary">Papers and talks co-authored with current students and former advisees.</p>
+      </div>
+      <div id="lab-work-root"></div>
+    </div>
+  </section>
+
   <!-- ============ ALUMNI ============ -->
   <section class="section soft" id="alumni">
     <div class="container">
@@ -109,15 +139,11 @@
         <p class="sub">Graduates of my lab have moved on to faculty positions and professional roles at institutions across North America.</p>
       </div>
       <ul class="alumni-list reveal">
-        <li><strong>Joyce Liu</strong> — M.Ed. <span class="meta">· 2025</span></li>
-        <li><strong>Tarid Wongvorachan</strong> — Ph.D. <span class="meta">· 2024</span></li>
-        <li><strong>Guher Gorgun</strong> — Ph.D. <span class="meta">· 2024</span></li>
-        <li><strong>Elisabetta Mazzullo</strong> — M.Ed. <span class="meta">· 2024</span></li>
-        <li><strong>Bin Tan</strong> — M.Ed. <span class="meta">· 2023</span></li>
-        <li><strong>Ashley Clelland</strong> — M.Ed. <span class="meta">· 2022</span></li>
-        <li><strong>Seyma Nur Yildirim-Erbasli</strong> — Ph.D. <span class="meta">· 2022</span></li>
-        <li><strong>Karen Fung</strong> — Ph.D. <span class="meta">· 2020</span></li>
-        <li><strong>Jiaying Xiao</strong> — M.Ed. <span class="meta">· 2019</span></li>
+        <li><strong>Tarid Wongvorachan</strong> — Ph.D. <span class="meta">· 2024</span><span class="now"><a href="https://education.usask.ca/people/profiles/wongvorachan.php" target="_blank" rel="noopener">Assistant Professor, University of Saskatchewan</a></span></li>
+        <li><strong>Guher Gorgun</strong> — Ph.D. <span class="meta">· 2024</span><span class="now"><a href="https://people.coe.uga.edu/guher-gorgun/" target="_blank" rel="noopener">Assistant Professor, University of Georgia</a></span></li>
+        <li><strong>Seyma Nur Yildirim-Erbasli</strong> — Ph.D. <span class="meta">· 2022</span><span class="now"><a href="https://concordia.ab.ca/faculty-arts/departments/psychology/faculty/full-time-faculty-psychology/seyma-yildirim-erbasli/" target="_blank" rel="noopener">Associate Professor, Concordia University of Edmonton</a></span></li>
+        <li><strong>Karen Fung</strong> — Ph.D. <span class="meta">· 2020</span><span class="now">Vice-President, Psychometrics and Data Analytics, The Pharmacy Examining Board of Canada</span></li>
+        <li><strong>Jiaying Xiao</strong> — M.Ed. <span class="meta">· 2019</span><span class="now">Psychometrician, ETS</span></li>
         <li><strong>Derek Radford</strong> — M.Ed. <span class="meta">· 2018</span></li>
       </ul>
     </div>
@@ -170,6 +196,9 @@
   </div>
 </footer>
 
+<script src="../data/publications.js"></script>
+<script src="../data/presentations.js"></script>
+<script src="../data/news.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>
 </html>

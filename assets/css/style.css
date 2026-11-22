@@ -1847,3 +1847,31 @@ details.year-block > summary:hover h3 { color: var(--accent); }
   .sw-grid { grid-template-columns: 1fr; }
   .sw-cover { width: 68px; }
 }
+
+
+/* ---------- My Lab: recent work, where former advisees are now ---------- */
+
+.lab-author {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+.alumni-list li .now {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+#lab-work .cite-section:last-child { margin-bottom: 0; }
+.lab-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+.lab-location svg {
+  width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;
+  fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.page-hero p + p { margin-top: 12px; }
+.news-item .body ul { margin: 8px 0 0 1.1em; }
+.news-item .body li { margin: 4px 0; }
