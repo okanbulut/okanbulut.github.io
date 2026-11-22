@@ -430,11 +430,11 @@
     if (!labNews.length) labNewsRoot.closest("section").hidden = true;
   }
 
-  // Home: items from NEWS_HOME_FROM_YEAR on, plus a link to the archive.
+  // Home: items from NEWS_HOME_FROM_YEAR on (except home: false), plus a link to the archive.
   var newsRoot = document.getElementById("news-root");
   if (newsRoot && typeof NEWS !== "undefined") {
     NEWS.forEach(function (item) {
-      if (newsYear(item) >= NEWS_CUTOFF) newsRoot.appendChild(newsItem(item));
+      if (newsYear(item) >= NEWS_CUTOFF && item.home !== false) newsRoot.appendChild(newsItem(item));
     });
     var more = document.getElementById("news-archive-link");
     if (more && NEWS.some(function (item) { return newsYear(item) < NEWS_CUTOFF; })) more.hidden = false;
