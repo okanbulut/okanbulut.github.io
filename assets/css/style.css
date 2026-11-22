@@ -2032,7 +2032,7 @@ a.paper-card:hover, a.paper-card:focus-visible {
 #lab-papers { padding-bottom: 8px; }
 #lab-papers + #lab { padding-top: 32px; }
 
-/* ---------- Research: living program diagram (mockup) ---------- */
+/* ---------- Research: living program diagram ---------- */
 
 /* Tiers rise in one after another when the diagram scrolls into view. */
 .rprogram.reveal { opacity: 1; transform: none; }
@@ -2145,7 +2145,7 @@ a.paper-card:hover, a.paper-card:focus-visible {
   .rp-arrow::after, .rp-engine::after { display: none; }
 }
 
-/* ---------- Research: how my research has evolved (mockup) ---------- */
+/* ---------- Research: how my research has evolved ---------- */
 
 .stream { position: relative; }
 .stream-svg { display: block; width: 100%; height: auto; overflow: visible; }
@@ -2176,7 +2176,10 @@ a.paper-card:hover, a.paper-card:focus-visible {
 .stream-tip b { display: block; font-family: var(--font-display); }
 .stream-tip span { color: var(--text-soft); }
 .stream-note { text-align: center; color: var(--muted); font-size: 0.82rem; margin-top: 8px; }
-@media (max-width: 640px) { .stream-svg .s-label { display: none; } }
+@media (max-width: 640px) {
+  .stream-svg .s-label { display: none; }
+  .stream-svg .axis text { font-size: 34px; }  /* the SVG scales to about a third on phones */
+}
 @media (prefers-reduced-motion: reduce) {
   .stream-svg .clip-rect, .stream-svg .s-label, .stream-svg .layer { transition: none; }
 }

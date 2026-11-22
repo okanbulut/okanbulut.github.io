@@ -13,11 +13,11 @@
   var FIRST_YEAR = 2015;
   // Checked top to bottom; the first match wins.
   var THEMES = [
-    { key: "ai", label: "AI & language models", re: /\b(LLMs?|large language|language models?|generative|ChatGPT|GPT|chatbots?|conversation|artificial intelligence|AI)\b/i },
+    { key: "ai", label: "AI & language models", re: /\b(LLMs?|large language|language models?|generative|ChatGPT|GPT|chatbots?|conversational|conversation|artificial intelligence|AI|question generation|item generation)\b/i },
     { key: "process", label: "Process data & engagement", re: /(response time|process data|log data|sequential|disengage|engagement|effort|careless|rapid guess|slow|problem-solving|time)/i },
-    { key: "ml", label: "Data mining & learning analytics", re: /(machine learning|data mining|learning analytics|predict|explainable|random forest|feature|natural language|text|recommend|classification|deep)/i },
-    { key: "psy", label: "Measurement & psychometrics", re: /(item response|IRT|adaptive|invariance|differential item|DIF|psychometric|measurement|validity|reliab|scale|equating|factor|test|items?)\b/i },
-    { key: "app", label: "Applied education research", re: /./ },
+    { key: "ml", label: "Data mining & learning analytics", re: /(machine learning|data mining|learning analytics|assessment analytics|predict|explainable|random forest|feature|natural language|text|recommend|classification|deep|neural|embedding|essay scoring|anomaly|knowledge tracing|tutoring|dropout identification)/i },
+    { key: "psy", label: "Measurement & assessment", re: /(item response|IRT|Rasch|adaptive|invariance|differential item|DIF|psychometric|measur|validity|validat|reliab|scales?\b|equating|factor|test|items?\b|assessments?|score report|scoring|feedback|missing data|ability estimation|distractors|profile analysis|subscore|multiple-choice|OSCE)/i },
+    { key: "app", label: "Interdisciplinary collaborations", re: /./ },
   ];
   var STACK = ["psy", "ml", "process", "app", "ai"]; // bottom to top
   var COLORS = {
