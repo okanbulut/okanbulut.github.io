@@ -1,0 +1,4 @@
+{
+  "_about": "DOIs that the weekly publication sync (scripts/sync-publications.mjs) should never add, e.g. items on ORCID that you leave off the website on purpose. One DOI per line, without https://doi.org/.",
+  "ignore": []
+}

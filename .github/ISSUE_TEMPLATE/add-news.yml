@@ -1,0 +1,29 @@
+name: Add news
+description: Add a news item to the home page, or to Lab news on the My Lab page. A pull request is opened for you to review.
+title: "News: "
+labels: ["news"]
+body:
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      description: Month and year shown on the badge. Leave empty for the current month.
+      placeholder: December 2026
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where should it appear?
+      options:
+        - Home page only (general news)
+        - Home page and My Lab page (lab news)
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: text
+    attributes:
+      label: News text
+      description: "Plain text is fine. Optional formatting: **bold**, *italic*, [link text](https://...), and lines starting with - become a bulleted list."
+      placeholder: Congratulations to **Name** on ...
+    validations:
+      required: true

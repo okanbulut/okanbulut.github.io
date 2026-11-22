@@ -1,0 +1,52 @@
+# Weekly publication sync from ORCID (with Crossref/DataCite metadata).
+# Opens or updates one pull request with new and newly published entries.
+name: Sync publications
+
+on:
+  schedule:
+    - cron: "0 14 * * 1" # Mondays, 7 or 8 AM in Edmonton
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/**"
+      - ".github/workflows/sync-publications.yml"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # On pull requests that change the scripts, only show what would change.
+      - name: Dry run
+        if: github.event_name == 'pull_request'
+        run: node scripts/sync-publications.mjs --dry-run
+
+      - name: Sync from ORCID
+        if: github.event_name != 'pull_request'
+        id: sync
+        run: node scripts/sync-publications.mjs --summary "$RUNNER_TEMP/summary.md"
+
+      - name: Check the data files
+        if: github.event_name != 'pull_request'
+        run: node scripts/check-data.mjs
+
+      - name: Open or update the pull request
+        if: github.event_name != 'pull_request' && steps.sync.outputs.changes != '0'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/publication-sync
+          add-paths: data/publications.js
+          commit-message: Sync publications from ORCID
+          title: "Publication sync: new and updated entries"
+          body-path: ${{ runner.temp }}/summary.md
+          labels: publications
+          assignees: ${{ github.repository_owner }}
+          delete-branch: true
