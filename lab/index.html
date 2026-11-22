@@ -13,10 +13,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bulut Research Group — Okan Bulut</title>
-  <meta name="description" content="The Bulut Research Group at the University of Alberta: current graduate students, former advisees, collaborators, and information for prospective students.">
+  <meta name="description" content="The Bulut Research Group at the University of Alberta: current graduate students, recent work with lab members, former advisees and where they are now, and information for prospective students.">
   <link rel="canonical" href="https://www.okanbulut.com/lab/">
   <meta property="og:title" content="Bulut Research Group — Okan Bulut">
-  <meta property="og:description" content="The Bulut Research Group at the University of Alberta: current graduate students, former advisees, collaborators, and information for prospective students.">
+  <meta property="og:description" content="The Bulut Research Group at the University of Alberta: current graduate students, recent work with lab members, former advisees and where they are now, and information for prospective students.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.okanbulut.com/lab/">
   <meta property="og:image" content="https://www.okanbulut.com/assets/img/share-card.png">
@@ -101,30 +101,37 @@
     </div>
   </section>
 
+  <!-- ============ LAB MEMBERS' WORK (filled from data/publications.js and data/presentations.js) ============ -->
+  <section class="section soft" id="lab-work">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Recent work with lab members</h2>
+        <p class="sub" id="lab-work-summary">Papers and talks co-authored with current students and former advisees.</p>
+      </div>
+      <div id="lab-work-root"></div>
+    </div>
+  </section>
+
   <!-- ============ ALUMNI ============ -->
-  <section class="section soft" id="alumni">
+  <section class="section" id="alumni">
     <div class="container">
       <div class="section-head reveal">
         <h2>Former advisees</h2>
         <p class="sub">Graduates of my lab have moved on to faculty positions and professional roles at institutions across North America.</p>
       </div>
       <ul class="alumni-list reveal">
-        <li><strong>Joyce Liu</strong> — M.Ed. <span class="meta">· 2025</span></li>
-        <li><strong>Tarid Wongvorachan</strong> — Ph.D. <span class="meta">· 2024</span></li>
-        <li><strong>Guher Gorgun</strong> — Ph.D. <span class="meta">· 2024</span></li>
-        <li><strong>Elisabetta Mazzullo</strong> — M.Ed. <span class="meta">· 2024</span></li>
-        <li><strong>Bin Tan</strong> — M.Ed. <span class="meta">· 2023</span></li>
-        <li><strong>Ashley Clelland</strong> — M.Ed. <span class="meta">· 2022</span></li>
-        <li><strong>Seyma Nur Yildirim-Erbasli</strong> — Ph.D. <span class="meta">· 2022</span></li>
-        <li><strong>Karen Fung</strong> — Ph.D. <span class="meta">· 2020</span></li>
-        <li><strong>Jiaying Xiao</strong> — M.Ed. <span class="meta">· 2019</span></li>
+        <li><strong>Tarid Wongvorachan</strong> — Ph.D. <span class="meta">· 2024</span><span class="now"><a href="https://education.usask.ca/people/profiles/wongvorachan.php" target="_blank" rel="noopener">Assistant Professor, University of Saskatchewan</a></span></li>
+        <li><strong>Guher Gorgun</strong> — Ph.D. <span class="meta">· 2024</span><span class="now"><a href="https://people.coe.uga.edu/guher-gorgun/" target="_blank" rel="noopener">Assistant Professor, University of Georgia</a></span></li>
+        <li><strong>Seyma Nur Yildirim-Erbasli</strong> — Ph.D. <span class="meta">· 2022</span><span class="now"><a href="https://concordia.ab.ca/faculty-arts/departments/psychology/faculty/full-time-faculty-psychology/seyma-yildirim-erbasli/" target="_blank" rel="noopener">Associate Professor, Concordia University of Edmonton</a></span></li>
+        <li><strong>Karen Fung</strong> — Ph.D. <span class="meta">· 2020</span><span class="now">Vice-President, Psychometrics and Data Analytics, The Pharmacy Examining Board of Canada</span></li>
+        <li><strong>Jiaying Xiao</strong> — M.Ed. <span class="meta">· 2019</span><span class="now">Psychometrician, ETS</span></li>
         <li><strong>Derek Radford</strong> — M.Ed. <span class="meta">· 2018</span></li>
       </ul>
     </div>
   </section>
 
   <!-- ============ PROSPECTIVE STUDENTS ============ -->
-  <section class="section" id="prospective">
+  <section class="section soft" id="prospective">
     <div class="container">
       <div class="callout callout-full reveal">
         <h3>Prospective students</h3>
@@ -170,6 +177,8 @@
   </div>
 </footer>
 
+<script src="../data/publications.js"></script>
+<script src="../data/presentations.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>
 </html>

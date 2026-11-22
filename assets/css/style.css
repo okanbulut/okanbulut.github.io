@@ -1847,3 +1847,18 @@ details.year-block > summary:hover h3 { color: var(--accent); }
   .sw-grid { grid-template-columns: 1fr; }
   .sw-cover { width: 68px; }
 }
+
+
+/* ---------- My Lab: recent work, where former advisees are now ---------- */
+
+.lab-author {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+.alumni-list li .now {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+#lab-work .cite-section:last-child { margin-bottom: 0; }

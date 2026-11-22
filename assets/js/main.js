@@ -270,6 +270,97 @@
     wireSearch(presRoot);
   }
 
+  /* ---------- My Lab: recent work with lab members ---------- */
+
+  // Lists publications and presentations that have a current student or a
+  // former advisee as a co-author. Names come from the #lab cards and the
+  // #alumni list on the same page, matched as first initial + last name, so
+  // nothing here needs editing when a citation or a student is added.
+  var LAB_WORK_YEARS = 3;   // how many recent years to list
+  var labWorkRoot = document.getElementById("lab-work-root");
+  if (labWorkRoot && typeof PUBLICATIONS !== "undefined") {
+    var fold = function (t) {
+      return t.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/ı/g, "i")
+        .replace(/[\-‐-―]/g, " ").replace(/\s+/g, " ").trim();
+    };
+    var members = [];
+    document.querySelectorAll("#lab .person h3, #alumni li strong").forEach(function (el) {
+      var tokens = fold(el.textContent).split(" ");
+      if (tokens.length > 1) members.push({ initial: tokens[0].charAt(0), tail: " " + tokens.slice(1).join(" ") + " " });
+    });
+    var AUTHOR_RE = /([A-ZÀ-Žİ][^,]*?),\s*((?:[A-ZÀ-Žİ]\.(?:\s?-?[A-ZÀ-Žİ]\.)*\s?)+)/g;
+    var LEAD_RE = /^([\s\S]*?)\s*\(((?:19|20)\d{2}|In press)[^)]*\)/;
+    var isMember = function (last, initials) {
+      var i = fold(initials).charAt(0), l = " " + fold(last) + " ";
+      return members.some(function (m) { return m.initial === i && m.tail.indexOf(l) !== -1; });
+    };
+    // Returns { year, html } with lab members' names marked, or null.
+    var labEntry = function (entry) {
+      var html = typeof entry === "string" ? entry : entry.html;
+      var m = html.match(LEAD_RE);
+      if (!m) return null;
+      var authors = m[1], hit = false, a;
+      var marked = authors;
+      AUTHOR_RE.lastIndex = 0;
+      while ((a = AUTHOR_RE.exec(authors.replace(/&amp;/g, ",")))) {
+        if (!isMember(a[1].trim(), a[2])) continue;
+        hit = true;
+        var name = a[1].trim() + ", " + a[2].trim();
+        marked = marked.replace(name, '<span class="lab-author">' + name + "</span>");
+      }
+      if (!hit) return null;
+      return { year: m[2], html: marked + html.slice(m[1].length) };
+    };
+    var collect = function (lists) {
+      var out = [];
+      lists.forEach(function (list) {
+        (list || []).forEach(function (e) { var w = labEntry(e); if (w) out.push(w); });
+      });
+      return out;
+    };
+    var flat = function (groups) { return (groups || []).map(function (g) { return g.items; }); };
+    var P = PUBLICATIONS;
+    var pubs = collect([P.books, P.chapters, P.proceedings].concat(flat(P.articles)));
+    var talks = typeof PRESENTATIONS !== "undefined"
+      ? collect([PRESENTATIONS.invited].concat(flat(PRESENTATIONS.conference))) : [];
+
+    var all = pubs.concat(talks).filter(function (w) { return /^\d/.test(w.year); });
+    var newest = Math.max.apply(null, all.map(function (w) { return +w.year; }));
+    var oldest = Math.min.apply(null, all.map(function (w) { return +w.year; }));
+    var fromYear = newest - LAB_WORK_YEARS + 1;
+    var summary = document.getElementById("lab-work-summary");
+    if (summary) {
+      summary.innerHTML = "Since " + oldest + ", lab members have co-authored " + pubs.length +
+        " publications and " + talks.length + " presentations with me. Below is the work from " +
+        fromYear + " on, with lab members’ names highlighted.";
+    }
+
+    // Group newest first; "In press" comes before the years.
+    var byYear = function (works) {
+      var groups = {}, order = [];
+      works.forEach(function (w) {
+        if (w.year !== "In press" && +w.year < fromYear) return;
+        if (!groups[w.year]) { groups[w.year] = []; order.push(w.year); }
+        groups[w.year].push(w.html);
+      });
+      order.sort(function (x, y) { return (y === "In press") - (x === "In press") || y - x; });
+      return order.map(function (y) { return { year: y, items: groups[y] }; });
+    };
+    [["lab-pubs", "Publications", pubs], ["lab-talks", "Presentations", talks]].forEach(function (s) {
+      var groups = byYear(s[2]);
+      if (!groups.length) return;
+      var n = groups.reduce(function (k, g) { return k + g.items.length; }, 0);
+      var sec = sectionEl(s[0], s[1], "", n);
+      yearBlocks(sec, groups);
+      // Only the newest year starts open here, to keep the page short.
+      sec.querySelectorAll(".year-block").forEach(function (b, i) {
+        b.id = s[0] + "-" + b.id;
+        if (i > 0) { b.open = false; b.removeAttribute("data-default-open"); }
+      });
+      labWorkRoot.appendChild(sec);
+    });
+  }
+
   function fillCounts(map) {
     Object.keys(map).forEach(function (k) {
       var el = document.querySelector('[data-count-for="' + k + '"]');
