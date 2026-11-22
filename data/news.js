@@ -24,6 +24,10 @@ const NEWS_HOME_FROM_YEAR = 2026;
 const NEWS = [
   {
   date: "November 2026",
+  html: "I'll be a panelist at <strong>Learning and Teaching with AI: EQUAL-AI K–12 Education Forum</strong>, hosted at OISE, University of Toronto, on Tuesday, November 24 (10:00 a.m. to 12:00 p.m. ET), at the Dr. Eric Jackman Institute of Child Study. The forum brings together educators and researchers from across Canada to explore how AI is reshaping children's learning, teaching, and assessment. Attendance is in person or by livestream (<a href='https://oise.jotform.com/263014444504852'>register here</a>).",
+  },
+  {
+  date: "November 2026",
   lab: true,
   html: "Seven of our papers were accepted for the <strong>NCME 2027 Annual Meeting</strong> in Toronto in April 2027:<ul><li><em>Comparing slow and non-slow responses in computerized assessments with transition network analysis</em> (Daniel Jerez)</li><li><em>From learn to apply: Profiling behavioral engagement in digital assessment with process data</em> (Joyce Liu)</li><li><em>Predicting item nonresponse from item features using explainable machine learning</em> (Mehrdad Yousefpoori-Naeim, Bin Tan)</li><li><em>When order matters: Positional bias in open-weight LLMs on multiple choice items</em> (Joyce Liu, Eunji Kim)</li><li><em>Structural validation with hierarchical network psychometrics: Social-emotional skills across cultural contexts</em> (Kevin Vo)</li><li><em>Do item positions impact response processes? Evidence from TIMSS 2023 interactive items</em> (Doris Abroampah, Joyce Liu)</li><li><em>Understanding early test termination through first-task time-use patterns</em> (Eunji Kim)</li></ul>",
   },
