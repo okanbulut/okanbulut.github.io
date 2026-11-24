@@ -193,6 +193,7 @@ const PUBLICATIONS = {
     {
       year: "2024",
       items: [
+        "Irvine, V., Miller, M., Bulut, O., Restoule, J.-P., &amp; Veletsianos, G. (2024). Developing scales of learner modality preferences and perspectives on online learning. <em>The Open/Technology in Education, Society, and Scholarship Association Conference, 4</em>(1), 1–11. https://doi.org/10.18357/otessac.2024.4.1.417",
         "Gorgun, G., &amp; Bulut, O. (2024). Instruction-tuned large-language models for quality control in automatic item generation: A feasibility study. <em>Educational Measurement: Issues and Practice, 44</em>(1), 96-107. https://doi.org/10.1111/emip.12663",
         "Bulut, O., &amp; Zheng, Y. (2024). Editorial: Special issue on artificial intelligence and machine learning in educational measurement (Part 1). <em>Chinese/English Journal of Educational Measurement and Evaluation, 5</em>(3), Article 1. https://doi.org/10.59863/BDQT2557",
         "Bulut, O., Beiting-Parrish, M., Casabianca, J. M., Slater, S. C., Jiao, H., Song, D., Ormerod, C., Fabiyi, D. G., Ivan, R., Walsh, C., Rios, O., Wilson, J., Yildirim-Erbasli, S. N., Wongvorachan, T., Liu, J. X., Tan, B., &amp; Morilova, P. (2024). The rise of artificial intelligence in educational measurement: Opportunities and ethical challenges. <em>Chinese/English Journal of Educational Measurement and Evaluation, 5</em>(3), Article 3. https://doi.org/10.59863/MIQL7785 (Preprint is available <a href=\"https://arxiv.org/abs/2406.18900\" target=\"_blank\" rel=\"noopener\">here</a>).",
@@ -390,6 +391,7 @@ const PUBLICATIONS = {
   ],
 
   proceedings: [
+    "Mazzullo, E., Bulut, O., Walsh, C., Sitarenios, G., &amp; MacIntosh, A. (2025). Fine-tuning GPT-3.5-turbo for automatic feedback generation. In <em>Proceedings of the 40th ACM/SIGAPP Symposium on Applied Computing</em> (pp. 40–47). ACM. https://doi.org/10.1145/3672608.3707735",
     "Bulut, O., Tan, B., Mazzullo, E., &amp; Walsh, C. (2026). The scoring paradox: Multi-agent architectures for unbiased feedback optimization. In <em>Proceedings of the Artificial Intelligence in Measurement and Education Conference (AIME-Con): Coordinated Session Papers</em>, 274–283. Available from https://aclanthology.org/2026.aimecon-sessions.30/",
     "Bulut, O., &amp; Walsh, C. (2026). A multi-agent system for feedback quality assurance: Evaluate, revise, and validate at scale. <em>Proceedings of the Impactful and Responsible AI Systems for Education Workshop</em>, in <em>Proceedings of Machine Learning Research, 339</em>, 1-11. Available from https://proceedings.mlr.press/v339/bulut26a.html",
     "Kim, J.-S., Wallin, G., Wu, H., Sweet, T. M., Junker, B. W., Moustaki, I., Harring, J. R., Bulut, O., Tong, X. C., &amp; Di Plinio, S. (Eds.). (2026). <em>Proceedings of the International Meeting of the Psychometric Society: The 90th Annual Meeting, Minneapolis, USA, 2025.</em> https://doi.org/10.64028/imps2025",
