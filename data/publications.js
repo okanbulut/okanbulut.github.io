@@ -114,7 +114,7 @@ const PUBLICATIONS = {
       url: "https://link.springer.com/book/9783031563645",
     },
     {
-      html: "Bulut, O. (2024). From adaptive testing to personalized adaptive testing: Applications of recommender systems. In H. Jiao &amp; R. W. Lissitz (Eds.), <a href=\"https://www.infoagepub.com/products/Machine-Learning-Natural-Language-Processing-and-Psychometrics\" target=\"_blank\" rel=\"noopener\"><em>Machine learning, natural language processing, and psychometrics</em></a> (pp. 177-199). Information Age Publishing.",
+      html: "Bulut, O. (2024). From adaptive testing to personalized adaptive testing: Applications of recommender systems. In H. Jiao &amp; R. W. Lissitz (Eds.), <a href=\"https://bookstore.emerald.com/machine-learning-natural-language-processing-and-psychometrics-hb-9798887306056.html\" target=\"_blank\" rel=\"noopener\"><em>Machine learning, natural language processing, and psychometrics</em></a> (pp. 177-199). Information Age Publishing.",
       cover: "/assets/img/covers/machine-learning-nlp-psychometrics.jpg",
       url: "https://bookstore.emerald.com/machine-learning-natural-language-processing-and-psychometrics-hb-9798887306056.html",
     },
@@ -124,7 +124,7 @@ const PUBLICATIONS = {
       url: "https://doi.org/10.4018/979-8-3693-0066-4.ch004",
     },
     {
-      html: "Bulut, O., &amp; Cui, Y. (2021). Validating the findings of a survey research study. In U. Luhanga &amp; A. G. Harbaugh (Eds.), <a href=\"https://www.infoagepub.com/products/Basic-Elements-of-Survey-Research-in-Education\" target=\"_blank\" rel=\"noopener\"><em>Basic elements of survey research in education: Addressing the problems your advisor never told you about</em></a> (pp. 719-746). Charlotte, NC: Information Age Publishing.",
+      html: "Bulut, O., &amp; Cui, Y. (2021). Validating the findings of a survey research study. In U. Luhanga &amp; A. G. Harbaugh (Eds.), <a href=\"https://bookstore.emerald.com/basic-elements-of-survey-research-in-education-hb-9781648026034.html\" target=\"_blank\" rel=\"noopener\"><em>Basic elements of survey research in education: Addressing the problems your advisor never told you about</em></a> (pp. 719-746). Charlotte, NC: Information Age Publishing.",
       cover: "/assets/img/covers/basic-elements-of-survey-research.jpg",
       url: "https://bookstore.emerald.com/basic-elements-of-survey-research-in-education-hb-9781648026034.html",
     },
