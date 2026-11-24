@@ -352,10 +352,10 @@
       var n = groups.reduce(function (k, g) { return k + g.items.length; }, 0);
       var sec = sectionEl(s[0], s[1], "", n);
       yearBlocks(sec, groups);
-      // Only the newest year starts open here, to keep the page short.
-      sec.querySelectorAll(".year-block").forEach(function (b, i) {
+      // Every year starts collapsed here, to keep the page short.
+      sec.querySelectorAll(".year-block").forEach(function (b) {
         b.id = s[0] + "-" + b.id;
-        if (i > 0) { b.open = false; b.removeAttribute("data-default-open"); }
+        b.open = false; b.removeAttribute("data-default-open");
       });
       labWorkRoot.appendChild(sec);
     });
