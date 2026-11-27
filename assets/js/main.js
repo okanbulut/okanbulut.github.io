@@ -421,9 +421,121 @@
     cards.forEach(function (c) { track.appendChild(render(c, false)); });
     // Second copy makes the loop seamless; screen readers skip it.
     cards.forEach(function (c) { track.appendChild(render(c, true)); });
-    track.style.setProperty("--paper-speed", (cards.length * 6) + "s");
     root.appendChild(track);
+    root.setAttribute("tabindex", "0");
+    root.setAttribute("aria-label", "Papers with lab members. Use the arrow buttons or scroll sideways to browse.");
+
+    var wrap = root.parentNode;
+    var arrow = function (dir, label) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "paper-arrow paper-arrow-" + dir;
+      b.setAttribute("aria-label", label);
+      b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' +
+        (dir === "prev" ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7") + '"/></svg>';
+      return b;
+    };
+    var prev = arrow("prev", "Previous papers"), next = arrow("next", "Next papers");
+    var stage = document.createElement("div");
+    stage.className = "paper-stage";
+    wrap.insertBefore(stage, root);
+    stage.appendChild(root); stage.appendChild(prev); stage.appendChild(next);
     root.closest("section").hidden = false;
+
+    // The row is a normal horizontal scroller (mouse wheel, trackpad, touch,
+    // drag, arrow keys). A small loop nudges it along when nobody is using it,
+    // and jumps back by one copy's width so it never runs out.
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var SPEED = 40;          // pixels per second
+    var RESUME_AFTER = 3500; // ms of quiet before rolling again
+    var pos = 0, last = 0, holdUntil = 0, hovering = false, focused = false, visible = true;
+    var period = function () { return track.children[cards.length].offsetLeft - track.children[0].offsetLeft; };
+    var step = function () { var c = track.children[0]; return c.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 20); };
+    var hold = function () { holdUntil = performance.now() + RESUME_AFTER; };
+    var wrapPos = function () {
+      var p = period();
+      if (root.scrollLeft >= p) root.scrollLeft -= p;
+      pos = root.scrollLeft;
+    };
+
+    var settle = 0;
+    root.addEventListener("scroll", function () {
+      // A scroll we did not make ourselves means the visitor moved the row.
+      // Once it comes to rest past the first set, hop back to the same spot
+      // in the first set so the visitor can keep going forever.
+      if (Math.abs(root.scrollLeft - pos) > 2) {
+        hold(); pos = root.scrollLeft;
+        clearTimeout(settle);
+        settle = setTimeout(function () { if (!drag) wrapPos(); }, 200);
+      }
+    }, { passive: true });
+    ["wheel", "touchstart", "touchmove", "keydown"].forEach(function (e) {
+      root.addEventListener(e, hold, { passive: true });
+    });
+    root.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") hovering = true; });
+    root.addEventListener("pointerleave", function () { hovering = false; hold(); });
+    // Only keyboard focus pauses the row; a mouse press (e.g. a drag) does not.
+    root.addEventListener("focusin", function () {
+      try { focused = !!root.querySelector(":focus-visible") || root.matches(":focus-visible"); } catch (e) { focused = true; }
+    });
+    root.addEventListener("focusout", function () { focused = false; hold(); });
+
+    var go = function (dir) {
+      hold();
+      var p = period();
+      // Going back from the start: hop to the matching spot in the copy first.
+      if (dir < 0 && root.scrollLeft < step()) { root.scrollLeft += p; pos = root.scrollLeft; }
+      root.scrollBy({ left: dir * step() * (root.clientWidth > 700 ? 2 : 1), behavior: reduce ? "auto" : "smooth" });
+    };
+    prev.addEventListener("click", function () { go(-1); });
+    next.addEventListener("click", function () { go(1); });
+    root.addEventListener("keydown", function (e) {
+      if (e.target !== root) return;
+      if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+    });
+
+    // Drag with the mouse, like a touch swipe; a drag does not open the paper.
+    var drag = null;
+    var swallow = function (ev) { ev.preventDefault(); ev.stopPropagation(); };
+    root.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      drag = { x: e.clientX, left: root.scrollLeft, moved: false };
+    });
+    window.addEventListener("pointermove", function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x;
+      if (Math.abs(dx) > 5) { drag.moved = true; root.classList.add("dragging"); }
+      if (drag.moved) { hold(); root.scrollLeft = drag.left - dx; }
+    });
+    window.addEventListener("pointerup", function () {
+      if (!drag) return;
+      var moved = drag.moved; drag = null;
+      root.classList.remove("dragging");
+      if (moved) {
+        wrapPos();
+        root.addEventListener("click", swallow, true);
+        setTimeout(function () { root.removeEventListener("click", swallow, true); }, 0);
+      }
+    });
+    root.addEventListener("dragstart", function (e) { e.preventDefault(); });
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(root);
+    }
+    if (reduce) return;
+    var tick = function (now) {
+      var dt = last ? Math.min(now - last, 100) : 0;
+      last = now;
+      if (visible && !hovering && !focused && !drag && !document.hidden && now > holdUntil) {
+        pos += SPEED * dt / 1000;
+        var p = period();
+        if (pos >= p) pos -= p;
+        root.scrollLeft = pos;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   function fillCounts(map) {
