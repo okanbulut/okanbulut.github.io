@@ -1913,24 +1913,51 @@ details.year-block > summary:hover h3 { color: var(--accent); }
 
 .paper-showcase-section { overflow: hidden; }
 .paper-showcase-section .section-head { margin-bottom: 24px; }
+.paper-stage { position: relative; }
 .paper-marquee {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
   padding: 8px 0 14px;
+  cursor: grab;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
 }
+.paper-marquee::-webkit-scrollbar { display: none; }
+.paper-marquee:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.paper-marquee.dragging { cursor: grabbing; user-select: none; }
+.paper-marquee.dragging .paper-card { pointer-events: none; }
 .paper-track {
   display: flex;
   gap: 20px;
   width: max-content;
-  padding-left: 20px;
-  animation: paper-drift var(--paper-speed, 80s) linear infinite;
+  padding: 0 20px;
 }
-.paper-marquee:hover .paper-track,
-.paper-marquee:focus-within .paper-track { animation-play-state: paused; }
-@keyframes paper-drift {
-  to { transform: translateX(calc(-50% - 10px)); }
+.paper-arrow {
+  position: absolute;
+  top: calc(50% - 3px);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  opacity: 0.92;
+  transition: transform var(--transition), opacity var(--transition);
 }
+.paper-arrow:hover, .paper-arrow:focus-visible { opacity: 1; transform: scale(1.08); }
+.paper-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.paper-arrow svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+:root[data-theme="dark"] .paper-arrow { color: #0b0e1c; }
+.paper-arrow-prev { left: 16px; }
+.paper-arrow-next { right: 16px; }
 .paper-card {
   flex: 0 0 auto;
   width: 220px;
@@ -2020,12 +2047,13 @@ a.paper-card:hover, a.paper-card:focus-visible {
   .paper-card { width: 180px; height: 280px; }
   .paper-title { font-size: 0.9rem; -webkit-line-clamp: 4; }
   .paper-art { height: 52px; }
+  .paper-arrow { width: 38px; height: 38px; margin-top: -19px; }
+  .paper-arrow-prev { left: 8px; }
+  .paper-arrow-next { right: 8px; }
 }
 /* No motion requested: show the papers as a still row the visitor can swipe. */
 @media (prefers-reduced-motion: reduce) {
-  .paper-track { animation: none; }
-  .paper-card[aria-hidden="true"] { display: none; }
-  .paper-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .paper-marquee { -webkit-mask-image: none; mask-image: none; }
 }
 
 /* Keep the rolling papers and the lab members close together. */
